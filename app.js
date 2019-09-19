@@ -82,5 +82,4 @@ app.get('/blog/:id', function(req, res) {
 
 app.listen(8000, function() {
     console.log('Server su portdan calışıyor: 8000');
-    console.log('Çıkmak için ctrl+c')
 })
