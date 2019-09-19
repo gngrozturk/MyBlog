@@ -1,0 +1,3 @@
+# MyBlog
+
+yapım aşamasındadır.
