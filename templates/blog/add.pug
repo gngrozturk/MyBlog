@@ -1,0 +1,29 @@
+extends ../base
+
+block styles
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.2/css/all.css', integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr', crossorigin='anonymous')
+
+
+block content
+    h1 Blog Ekle
+    form.mt-5(method="POST", actions="/blog/add")
+        label(for='exampleFormControlTextarea1') Paylaşmak İstediğiniz Metnin Başlığını Giriniz
+        .input-group
+            input.form-control(type="text", name="title", aria-label='With textarea')
+        label(for='author') Yazarın adı
+        .input-group
+            input.form-control(type="text", name="author", id="author")
+
+        label(for='exampleFormControlTextarea1') Paylaşmak İstediğiniz Metni Giriniz
+        .input-group
+            .input-group-prepend
+                span.input-group-text
+                    i.far.fa-edit(style='font-size: 80px')
+            textarea.form-control(aria-label='With textarea' name="content")
+        .form-group.mt-5
+            label(for='exampleFormControlFile1') Görsel Materyal Eklemek İçint Lütfen Dosya Seçiniz
+            input#exampleFormControlFile1.form-control-file(type='file')
+        .row
+            .col-lg-12
+                button.btn.btn-primary.mt-5(type='submit') Gönder
+

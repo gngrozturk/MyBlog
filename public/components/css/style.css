@@ -1,0 +1,97 @@
+.nav-link
+{
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.main
+{
+    margin-top: 150px;
+}
+
+.footer
+{
+  background-color: #2D2D2D;
+  padding-top:30px;
+  padding-bottom:30px;
+  color: #ffff; 
+  margin-top:50px;
+}
+#git
+{
+  font-size: 30px;
+  color:green;
+  margin-top:30px;
+  margin-bottom: 10px;
+}
+#git:hover
+{
+  font-size: 40px;
+  color:#70db70;
+  margin-top:30px;
+  transition:0.3s;
+}
+#mail
+{
+  font-size: 30px;
+  color:#ffcc00;
+  margin-top:30px;
+  margin-bottom: 10px;
+}
+#mail:hover
+{
+  font-size: 40px;
+  color:#ffdb4d;
+  margin-top:30px;
+  transition:0.3s;
+}
+
+#tw
+{
+  font-size: 30px;
+  color:#1DA1F2;
+  margin-top:30px;
+}
+#tw:hover
+{
+  font-size: 40px;
+  color:#86cdf9;
+  margin-top:30px;
+  transition:0.3s;
+}
+#instagram
+{
+  font-size: 30px;
+  color:#D9163A;
+  margin-top:30px;
+}
+#instagram:hover
+{
+  font-size: 40px;
+  color:#f2738a;
+  margin-top:30px;
+  transition: 0.3s;
+}
+#in
+{
+  font-size: 30px;
+  margin-top:30px;
+}
+#in:hover
+{
+  font-size: 40px;
+  margin-top:30px;
+  transition:0.3s;
+}
+#yt
+{
+  font-size: 30px;
+  margin-top:30px;
+  color: red;
+}
+#yt:hover
+{
+  font-size: 40px;
+  margin-top:30px;
+  transition:0.3s;
+}
