@@ -1,26 +1,22 @@
 extends ../base
 
-
 block content
-    h1 Blog Ekle
-    form.mt-5(method="POST", actions="/blog/add", enctype="multipart/form-data")
+    h1 Blog Düzenle
+    form.mt-5(method="POST", actions="/blog/" + blog.id + '/edit', enctype="multipart/form-data")
         label(for='exampleFormControlTextarea1') Paylaşmak İstediğiniz Metnin Başlığını Giriniz
         .input-group
-            input.form-control(type="text", name="title", aria-label='With textarea', required)
-        label(for='author') Yazarın adı
-        .input-group
-            input.form-control(type="text", name="author", id="author", required)
+            input.form-control(type="text", name="title", aria-label='With textarea', value=blog.title, required)
 
         label(for='exampleFormControlTextarea1') Paylaşmak İstediğiniz Metni Giriniz
         .input-group
             .input-group-prepend
                 span.input-group-text
                     i.far.fa-edit(style='font-size: 80px')
-            textarea.form-control(aria-label='With textarea' name="content", required)
+            textarea.form-control(aria-label='With textarea' name="content", required)= blog.body
         .form-group.mt-5
             label(for='exampleFormControlFile1') Görsel Materyal Eklemek İçint Lütfen Dosya Seçiniz
-            input#exampleFormControlFile1.form-control-file(type='file', name="blog_image", required)
+            input#exampleFormControlFile1.form-control-file(type='file', name="blog_image")
+            img.img-thumbnail(src="/images/" + blog.image, width=200)
         .row
             .col-lg-12
                 button.btn.btn-primary.mt-5(type='submit') Gönder
-

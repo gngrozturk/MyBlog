@@ -2,8 +2,16 @@ extends ../base
 
 
 block content
+    .text-center
+        img.img-fluid.my-2(src="/images/" + blog.image, width="800")
     h1= blog.title
     p #{blog.author} tarafından yazıldı
 
     hr
     p= blog.body
+
+    a.btn.btn-outline-dark(href="/blog/" + blog.id + '/edit') Düzenle
+    a.btn.btn-outline-danger#delete-blog(href="#", data-id=blog.id) Sil
+
+block js
+    script(src="/components/js/index.js")

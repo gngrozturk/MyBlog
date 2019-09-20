@@ -13,6 +13,10 @@ let blogSchema = mongoose.Schema({
     body: {
         type: String,
         required: true
+    },
+    image: {
+        type: String,
+        required: true
     }
 })
 

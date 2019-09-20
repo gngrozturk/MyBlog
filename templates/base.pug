@@ -4,6 +4,7 @@ html(lang="en")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible" content="ie=edge")
         link(rel="stylesheet", href="/components/bootstrap/dist/css/bootstrap.min.css")
+        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.2/css/all.css', integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr', crossorigin='anonymous')
         link(rel="stylesheet", href="/components/css/style.css")
         link(href='https://fonts.googleapis.com/css?family=Yellowtail&display=swap', rel='stylesheet')
 
@@ -13,7 +14,7 @@ html(lang="en")
     body
         nav#navbar1.navbar.fixed-top.navbar-expand-lg.navbar-light.ml-auto.bg-light
             .container
-                a.navbar-brand(style="font-size:40px;font-family: 'Yellowtail', cursive;", href='#') Güngör Öztürk
+                a.navbar-brand(style="font-size:40px;font-family: 'Yellowtail', cursive;", href='/') Güngör Öztürk
                 button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
                     span.navbar-toggler-icon
                 #navbarSupportedContent.collapse.container.navbar-collapse.ml-auto
@@ -25,7 +26,7 @@ html(lang="en")
                         li.nav-item
                             a.nav-link(href='#') Hakkımda
                         li.nav-item
-                            a.nav-link(href='#') Takip Et
+                            a.nav-link(href='/blog/add') Blog Oluştur
                         li.nav-item
                             a.nav-link(href='#') Yazar Girişi
                     form.form-inline.my-2
@@ -36,6 +37,30 @@ html(lang="en")
 
         .container.main
             block content
+        footer
+            .footer
+                .row.container.mx-auto
+                    .col-lg-2
+                        a(href='', target='_blank')
+                            i#git.fab.fa-github
+                    .col-lg-2
+                        a(href='', target='_blank')
+                            i#mail.fas.fa-envelope
+                    .col-lg-2
+                        a(href='', target='_blank')
+                            i#tw.fab.fa-twitter
+                    .col-lg-2
+                        a(href='', target='_blank')
+                            i#instagram.fab.fa-instagram
+                    .col-lg-2
+                        a(href='', target='_blank')
+                            i#in.fab.fa-linkedin
+                    .col-lg-2
+                        a(href='', target='_blank')
+                            i#yt.fab.fa-youtube
+
+        
+
 
 
     script(src='/components/jquery/dist/jquery.min.js')

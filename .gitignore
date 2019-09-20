@@ -1,3 +1,5 @@
 node_modules
 public/components/jquery/*
 public/components/bootstrap/*
+public/images/*
+!public/images/.keep

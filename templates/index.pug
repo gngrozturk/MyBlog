@@ -1,17 +1,22 @@
 extends base
 
 block content
-    h1 Burası index sayfası
+    
     
     each blog in blogs
         .row.my-5
             .col-lg-7
-                a(href="/blog/" + blog.id)
-                    h1= blog.title
+                h1= blog.title
                 p= blog.spoiler
-            .col-lg-5
-                img.img-fluid(src='https://wallpaperaccess.com/full/651717.jpg', alt='')
+                
 
+            .col-lg-5
+                img.img-fluid(src="/images/" + blog.image, alt='')
+
+        .row
+            .col-lg-7
+                .d-flex.align-items-end
+                    a.btn.btn-primary(href="/blog/" + blog.id) Devamını oku
                             
 
 

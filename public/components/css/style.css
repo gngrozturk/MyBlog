@@ -19,15 +19,16 @@
 }
 #git
 {
+  color:#f0f0f0;   
   font-size: 30px;
-  color:green;
+  color:#FFFF;
   margin-top:30px;
   margin-bottom: 10px;
 }
 #git:hover
 {
   font-size: 40px;
-  color:#70db70;
+  color:#FFFF;
   margin-top:30px;
   transition:0.3s;
 }
@@ -74,11 +75,13 @@
 }
 #in
 {
+  color:#0274B3;
   font-size: 30px;
   margin-top:30px;
 }
 #in:hover
 {
+  color:#2a9cdb;
   font-size: 40px;
   margin-top:30px;
   transition:0.3s;
@@ -87,10 +90,12 @@
 {
   font-size: 30px;
   margin-top:30px;
-  color: red;
+  color:#FF0000;
+  
 }
 #yt:hover
 {
+  color:#ff2626;
   font-size: 40px;
   margin-top:30px;
   transition:0.3s;
