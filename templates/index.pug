@@ -1,22 +1,27 @@
 extends base
 
 block content
-    
-    
+
     each blog in blogs
-        .row.my-5
-            .col-lg-7
-                h1= blog.title
-                p= blog.spoiler
-                
+        #part
+            .row.my-5
+                .col-lg-7
+                    h1.display-4.titles= blog.title
+                    br
+                    p.paragraf= blog.spoiler
+                    
 
-            .col-lg-5
-                img.img-fluid(src="/images/" + blog.image, alt='')
+                .col-lg-5
+                    img.img-fluid(src="/images/" + blog.image, alt='')
 
-        .row
-            .col-lg-7
-                .d-flex.align-items-end
-                    a.btn.btn-primary(href="/blog/" + blog.id) Devamını oku
+            .row
+                .col-lg-12
+                    .d-flex.align-items-end
+                        a.button.btn.btn-primary(href="/blog/" + blog.id) Devamını oku
+                            i.ml-2.fas.fa-angle-double-right
+                        
+        
+
                             
 
 
