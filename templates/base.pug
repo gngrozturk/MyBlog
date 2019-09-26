@@ -9,6 +9,8 @@ html(lang="en")
         link(href='https://fonts.googleapis.com/css?family=Yellowtail&display=swap', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=Montserrat&display=swap', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap', rel='stylesheet')
+       
+
 
 
 
@@ -20,7 +22,7 @@ html(lang="en")
     body(style="background-color:#F5F5F5")
         nav#navbar1.navbar.fixed-top.navbar-expand-lg.navbar-light.ml-auto.bg-light
             .container
-                a.navbar-brand(style="font-size:39px;font-family: 'Yellowtail', cursive;", href='/') Güngör Öztürk
+                a.navbar-brand(style="font-size:40px;font-family: 'Yellowtail', cursive;", href='/') Güngör Öztürk
                 button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
                     span.navbar-toggler-icon
                 #navbarSupportedContent.collapse.container.navbar-collapse.ml-auto
@@ -40,10 +42,12 @@ html(lang="en")
 
                     form.form-inline.my-2
                         input.form-control.mr-sm-2(type='search', placeholder='Merak Ettikleriniz ?', aria-label='Merak Ettikleriniz ?')
-                        button.btn.buton_1.btn-outline-primary.my-2(type='submit')
+                        button.btn.buton_1.btn-outline-dark.my-2(type='submit')
                             | Ara 
                             i.fas.fa-search
 
+
+        block banner
         .container.main
             block content
         footer

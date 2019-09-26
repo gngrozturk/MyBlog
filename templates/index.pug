@@ -1,7 +1,12 @@
 extends base
 
-block content
+block banner
+    img.banner(src="/images/site/banner.jpg", alt="banner" width="100%")(style="display:inline-block")
+    
+        
+      
 
+block content
     each blog in blogs
         #part
             .row.my-5

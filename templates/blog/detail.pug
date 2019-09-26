@@ -1,24 +1,24 @@
 extends ../base
 
-
 block content
-    .text-center
-        img.img-fluid.my-2(src="/images/" + blog.image, width="900")
-    br
-    br  
-    h1.display-4.titles= blog.title
-    
-    p.paragraf= blog.body
-
-    br
-
-    p.paragraf2 #{blog.author}
+    .kapsamli
+        .text-center
+            img.img-fluid.my-2(src="/images/" + blog.image, width="900")
+        br
+        br  
+        h1.display-4.titles= blog.title
         
-    a.button.btn.mt-5.btn-dark(href="/blog/" + blog.id + '/edit') Düzenle 
-        i.ml-2.fas.fa-pencil-alt
+        p.paragraf= blog.body
 
-    a.button.btn.ml-5.mt-5.btn-danger#delete-blog(href="#", data-id=blog.id) Sil 
-        i.ml-2.fas.fa-trash-alt
+        br
+
+        p.paragraf2 #{blog.author}
+            
+        a.button.btn.mt-5.btn-dark(href="/blog/" + blog.id + '/edit') Düzenle 
+            i.ml-2.fas.fa-pencil-alt
+
+        a.button.btn.ml-5.mt-5.btn-danger#delete-blog(href="#", data-id=blog.id) Sil 
+            i.ml-2.fas.fa-trash-alt
 
 
 block js
