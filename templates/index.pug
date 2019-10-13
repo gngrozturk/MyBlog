@@ -1,10 +1,17 @@
 extends base
 
 block banner
-    img.banner(src="/images/site/banner.jpg", alt="banner" width="100%")(style="display:inline-block")
-    
-        
-      
+    #carouselExampleSlidesOnly.carousel.slide(data-ride='carousel')
+        .carousel-inner
+            .carousel-item
+            img.d-block.w-100.banner(src="images/site/banner.jpg", alt="banner")
+            .carousel-caption.captions
+                p Merhaba Ben Güngör Öztürk
+                br
+                
+                
+            
+       
 
 block content
     each blog in blogs

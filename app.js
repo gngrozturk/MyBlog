@@ -94,6 +94,11 @@ app.get('/blog/:id', passBlog, function(req, res) {
     })
 })
 
+// Hakkımda sayfası
+app.get('/about', function(req, res) {
+    res.render('about')
+})
+
 // Düzenleme sayfası
 app.get('/blog/:id/edit', passBlog, function(req, res) {
     res.render('blog/edit', {
