@@ -99,7 +99,12 @@ passport.deserializeUser((user, done) => {
 function isUserAuthenticated(req, res, next) {
   console.log(req.user);
   if (req.user) {
-    next();
+    if (req.user.id === process.env.GOOGLE_PERSONAL_ID) {
+      next();
+    } else {
+      req.logout();
+      res.redirect("/");
+    }
   } else {
     res.redirect("/login");
   }
@@ -194,6 +199,7 @@ app.get(
 app.get(
   "/auth/google/callback",
   passport.authenticate("google"),
+  isUserAuthenticated,
   (req, res) => {
     req.flash("success", "Hoş geldiniz " + req.user.displayName);
     res.redirect(
