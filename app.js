@@ -21,7 +21,7 @@ const upload = multer({
   dest: "public/images"
 });
 
-mongoose.connect("mongodb://localhost:27017/MyBlog", {
+mongoose.connect(process.env.DATABASE_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
