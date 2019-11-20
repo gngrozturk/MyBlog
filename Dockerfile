@@ -1,4 +1,4 @@
-FROM node:12.13-buster-slim
+FROM node:12.13-slim
 
 ADD . /blog
 WORKDIR /blog
