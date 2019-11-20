@@ -6,5 +6,5 @@ WORKDIR /blog
 RUN apt-get update
 RUN npm install
 
-CMD [ "npm start" ]
+CMD [ "npm run startprod" ]
 
