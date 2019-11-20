@@ -1,25 +1,27 @@
 extends ../base
 
 block content
-    .kapsamli
-        .text-center
-            img.img-fluid.my-2(src="/images/" + blog.image, width="900")
-        br
-        br  
-        h1.display-4.titles= blog.title
+    .kapsamli.mx-4
         
-        p.paragrafD= blog.body
 
+        h1.display-4.titles= blog.title
         br
+        img.img-fluid.my-3(src="/images/" + blog.image, width="100%")
 
+        .paragrafD!= convertedContent
+        br
         p.paragraf2 #{blog.author}
-            
-        a.button.btn.mt-5.btn-dark(href="/blog/" + blog.id + '/edit') Düzenle 
-            i.ml-2.fas.fa-pencil-alt
 
-        a.button.btn.ml-5.mt-5.btn-danger#delete-blog(href="#", data-id=blog.id) Sil 
-            i.ml-2.fas.fa-trash-alt
+        if user    
+            a.btn.btn-edit.mt-5(href="/blog/" + blog.id + '/edit') Düzenle 
+                i.ml-2.fas.fa-pencil-alt
+
+            a.btn.btn-delete.ml-3.mt-5#delete-blog(href="#", data-id=blog.id) Sil 
+                i.ml-2.fas.fa-trash-alt
 
 
 block js
     script(src="/components/js/index.js")
+    script.
+        $(".paragrafD img").addClass('img-fluid');
+    

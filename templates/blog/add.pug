@@ -1,26 +1,56 @@
 extends ../base
 
+block styles
+    link(rel="stylesheet" href="/components/simplemde/dist/simplemde.min.css")
 
 block content
-    h1 Blog Ekle
-    form.mt-5(method="POST", actions="/blog/add", enctype="multipart/form-data")
-        label(for='exampleFormControlTextarea1') Paylaşmak İstediğiniz Metnin Başlığını Giriniz
+    h1.add Blog Ekle
+    form.mt-5#addForm(method="POST" actions="/blog/add" enctype="multipart/form-data")
+        label(for='exampleFormControlTextarea1')
+            .p-form Paylaşmak İstediğiniz Metnin Başlığını Giriniz
         .input-group
-            input.form-control(type="text", name="title", aria-label='With textarea', required)
-        label(for='author') Yazarın adı
+            input.form-control#title(type="text" name="title" aria-label='With textarea', required)
+        br
+        label(for='author') 
+            .p-form Yazarın Adını Giriniz
         .input-group
-            input.form-control(type="text", name="author", id="author", required)
-
-        label(for='exampleFormControlTextarea1') Paylaşmak İstediğiniz Metni Giriniz
-        .input-group
-            .input-group-prepend
-                span.input-group-text
-                    i.far.fa-edit(style='font-size: 80px')
-            textarea.form-control(aria-label='With textarea' name="content", required)
+            input.form-control(type="text" name="author" id="author", required)
+        br
+        label(for='exampleFormControlTextarea1') 
+            .p-form Paylaşmak İstediğiniz Metni Giriniz
+        textarea.form-control#mdtextarea(aria-label='With textarea' name="content", required)
         .form-group.mt-5
-            label(for='exampleFormControlFile1') Görsel Materyal Eklemek İçint Lütfen Dosya Seçiniz
-            input#exampleFormControlFile1.form-control-file(type='file', name="blog_image", required)
+            label(for='exampleFormControlFile1') 
+                .p-form Görsel Materyal Eklemek İçin Lütfen Dosya Seçiniz
+                br
+            input#exampleFormControlFile1.form-control-file(type='file' name="blog_image", required)
+            
         .row
             .col-lg-12
-                button.btn.btn-primary.mt-5(type='submit') Gönder
+                button.btn.btn-send.mt-5#sbbtn(type='submit') Gönder
+                    i.ml-3.fas.fa-paper-plane
+
+
+block js
+    script(src="/components/simplemde/dist/simplemde.min.js")
+    script.
+        var simpleMD = new SimpleMDE({
+            element: document.getElementById("mdtextarea"),
+            indentWithTabs: true,
+        });
+        $("#sbbtn").click(function() {
+            simpleMD.toTextArea();
+            simpleMD = null;
+
+            var data = new FormData($("addForm"));
+            $.ajax({
+                url: '/blog/add',
+                enctype: 'multipart/form-data',
+                data: data,
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                cache: false,
+            })
+        })
 

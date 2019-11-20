@@ -3,28 +3,24 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible" content="ie=edge")
-        link(rel="stylesheet", href="/components/bootstrap/dist/css/bootstrap.min.css")
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.2/css/all.css', integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr', crossorigin='anonymous')
-        link(rel="stylesheet", href="/components/css/style.css")
-        link(href='https://fonts.googleapis.com/css?family=Yellowtail&display=swap', rel='stylesheet')
-        link(href='https://fonts.googleapis.com/css?family=Montserrat&display=swap', rel='stylesheet')
-        link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap', rel='stylesheet')
-        link(href='https://fonts.googleapis.com/css?family=Raleway&display=swap', rel='stylesheet')
-
-
-
-
-
-
+        link(rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css")
+        link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous')
+        link(rel="stylesheet" href="/components/css/style.css")
+        link(href='https://fonts.googleapis.com/css?family=Yellowtail&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Montserrat&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Raleway&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Open+Sans&display=swap', rel='stylesheet')
+        link(href='https://unpkg.com/aos@2.3.1/dist/aos.css', rel='stylesheet')
 
         block styles
 
         title #{title}
     body(style="background-color:#F5F5F5")
-        nav#navbar1.navbar.fixed-top.navbar-expand-lg.navbar-light.ml-auto.bg-light
+        nav#navbar1.navbar.navbar-expand-lg.navbar-light.ml-auto.bg-light.fixed-top
             .container
-                a.navbar-brand(style="font-size:40px;font-family: 'Yellowtail', cursive;", href='/') Güngör Öztürk
-                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                a.navbar-brand(style="font-size:40px;font-family: 'Yellowtail', cursive;" href='/') Güngör Öztürk
+                button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
                     span.navbar-toggler-icon
                 #navbarSupportedContent.collapse.container.navbar-collapse.ml-auto
                     ul.navbar-nav.ml-auto
@@ -34,49 +30,99 @@ html(lang="en")
                         li.nav-item
                             a.nav-link(href='#') Projeler 
                                 i.ml-2.fas.fa-laptop
-                        li.nav-item
-                            a.nav-link(href='/blog/add') Blog Oluştur
-                                i.ml-2.fas.fa-feather-alt
-                        li.nav-item
-                            a.nav-link(href='#') Yazar Girişi
-                                i.ml-2.fas.fa-door-open
+                        if user
+                            li.nav-item
+                                a.nav-link(href='/blog/add') Blog Oluştur
+                                    i.ml-2.fas.fa-feather-alt
+                        if user
+                            li.nav-item
+                                a.nav-link#exitbtn(href='#') #{user.given_name}
+                                    i.icon-active.ml-2.fas.fa-user-circle
+                        else
+                            li.nav-item
+                                a.nav-link(href='/login') Yazar Girişi
+                                    i.ml-2.fas.fa-door-open
 
-                    form.form-inline.my-2
-                        input.form-control.mr-sm-2.search(type='search', placeholder='Merak Ettikleriniz ?', aria-label='Merak Ettikleriniz ?')
-                        button.btn.buton_1.btn-dark.my-2.mx-auto(type='submit')
-                            | Ara 
-                            i.fas.fa-search
-
+                
 
         block banner
+
         .container.main
             block content
         footer
-            .footer
+            .footer.mt-5
                 .row.container.mx-auto
-                    .col-lg-2
-                        a(href='https://github.com/gngrozturk/MyBlog', target='_blank')
+                    .col-4.col-lg-2
+                       a(href='https://accounts.google.com/signin/v2/identifier?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2F%3Fhl%3DTR&followup=https%3A%2F%2Faccounts.google.com%2F%3Fhl%3DTR&hl=TR&flowName=GlifWebSignIn&flowEntry=ServiceLogin' target='_blank')
+                        i#mail.fas.fa-envelope 
+                    .col-4.col-lg-2
+                        a(href='https://github.com/gngrozturk' target='_blank')
                             i#git.fab.fa-github
-                    .col-lg-2
-                        a(href='', target='_blank')
-                            i#mail.fas.fa-envelope
-                    .col-lg-2
-                        a(href='', target='_blank')
+                    .col-4.col-lg-2
+                        a(href='' target='_blank')
+                            i#in.i.fab.fa-linkedin-in
+                    .col-4.col-lg-2
+                        a(href='' target='_blank')
                             i#tw.fab.fa-twitter
-                    .col-lg-2
-                        a(href='https://www.instagram.com/ozturkk.gungor/', target='_blank')
+                    .col-4.col-lg-2
+                        a(href='https://www.instagram.com/ozturkk.gungor/' target='_blank')
                             i#instagram.fab.fa-instagram
-                    .col-lg-2
-                        a(href='', target='_blank')
-                            i#in.fab.fa-linkedin
-                    .col-lg-2
-                        a(href='', target='_blank')
-                            i#yt.fab.fa-youtube
+                    .col-4.col-lg-2
+                        a(href='https://www.instagram.com/ozturkk.gungor/' target='_blank')
+                            i#spotify.fab.fa-spotify
+                    
+            .row.mx-auto#under.p-2
+                .p.mx-auto 
+                    |© Copyright by 
+                    span#name.ml-2 Güngör Öztürk
+                        
+                   
 
-        
-
+                    
 
 
     script(src='/components/jquery/dist/jquery.min.js')
     script(src='/components/bootstrap/dist/js/bootstrap.min.js')
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@8")
+    script.
+
+
+        $("#exitbtn").click(function(){
+            Swal.fire({
+                title: 'Çıkış yapmak istediğinize emin misiniz?',
+                text: "Çıkıs yaparsanız yeni yazı paylaşmak için tekrar giriş yapmanız gerekecek!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Evet',
+                cancelButtonText: 'Hayır'
+            }).then(({value}) => {
+                if (value){
+                    window.location.pathname = "/logout"
+                }
+            })            
+        })
+
+        var urlParams = new URLSearchParams(window.location.search);
+
+        if (urlParams.get('login')){
+            Swal.fire({
+                type: 'success',
+                title: 'Giriş yaptınız',
+                showConfirmButton: false,
+                timer: 2000
+            })
+            history.pushState({id : "home"}, "Index", "?")
+        }
+        if (urlParams.get('logout')) {
+            Swal.fire({
+                type: 'success',
+                title: 'Çıkış yaptınız',
+                showConfirmButton: false,
+                timer: 2000,
+            })   
+            history.pushState({id : "home"}, "Index", "?")
+        }
+
     block js
