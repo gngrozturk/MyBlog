@@ -21,7 +21,7 @@ const upload = multer({
   dest: "public/images"
 });
 
-mongoose.connect("mongodb://localhost:27017/MyBlog", {
+mongoose.connect(process.env.DATABASE_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -78,7 +78,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:8000/auth/google/callback"
+      callbackURL: process.env.GOOGLE_CALLBACK_URL
     },
     (accessToken, refreshToken, profile, done) => {
       console.log(JSON.stringify(profile));
