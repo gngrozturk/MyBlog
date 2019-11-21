@@ -20,6 +20,12 @@
   text-align: right;
   font-family: "Roboto", sans-serif;
 }
+
+.banner 
+  {
+    max-height:100vh;
+  }
+
 .add,
 .edit {
   margin-top: 100px;
@@ -240,12 +246,32 @@ body > footer > div > div {
   text-align: center;
 }
 
+@media screen and (max-width: 320px)
+{
+  .captions {
+    font-family: "Raleway", sans-serif;
+    text-align: left;
+    color:#ffff;
+    margin-bottom: 2px;
+  }
+  .captions-2 {
+    font-family: "Raleway", sans-serif;
+    text-align: left;
+    margin-bottom: 0px;
+    font-size: 10px;
+  }
+  .banner 
+  {
+    height:40vh;
+  }
+}
+
 @media screen and (max-width: 992px) {
-  #navbar1 {
+  #navbar1 
+  {
     position: relative;
   }
-  .add,
-  .edit {
+  .add,.edit {
     margin-top: 50px;
     font-family: "Open Sans", sans-serif;
   }
@@ -285,35 +311,38 @@ body > footer > div > div {
     font-family: "Raleway", sans-serif;
     text-align: left;
     color:#ffff;
-    font-size: 20px;
     margin-bottom: 2px;
   }
   .captions-2 {
     font-family: "Raleway", sans-serif;
     text-align: left;
-   
-    font-size: 12px;
+    margin-bottom: 0px;
+    font-size: 10px;
   }
-  .banner {
-    height:33vh;
-   }
+  
+  .banner 
+  {
+    max-height:40vh;
+  }
 }
-@media screen and (min-width: 992px) {
-  .banner {
-   max-height:100vh;
-  }
-  .captions {
-    font-size: 50px;
+
+@media screen and (min-width: 768px)
+{
+  .captions 
+  {
     font-family: "Raleway", sans-serif;
     text-align: left;
     color:#ffff;
-    margin-bottom:20px;
+    margin-bottom: 15px;
+    font-size: 50px;
   }
-  .captions-2 {
-    font-size: 20px;
+  .captions-2 
+  {
     font-family: "Raleway", sans-serif;
     text-align: left;
     color: #ffff;
-    margin-bottom: 150px;
+    margin-bottom: 90px;
+    font-size: 18px;
   }
+
 }
