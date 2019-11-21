@@ -5,13 +5,13 @@ block banner
         .carousel-inner
             .carousel-item
             img.d-block.w-100.banner(src="images/site/banner.jpg", alt="banner")
-            .carousel-caption.captions
-                p Merhaba Ben Güngör Öztürk
-                br
+            .carousel-caption
+                .p.captions Merhaba Ben Güngör
+                .p.captions-2 Bu platformda "Hakkımda" kısmından beni daha yakından tanıyabilir,"Projelerim" kısmından çalışmalarımı görebilir ve Anasayfadan blog yazılarımı takip edebilirsiniz.İletişim bilgilerim sayfanın en altında olup bu kanallardan bana ulaşabilir,Boş zamanlarınızı daha keyifli hale getirmek için Spotify çalma listelerime göz atabilirsiniz. Zaman ayırıp sayfamı ziyaret ettiğiniz için teşekkür ederim.
 
-                            
-       
 
+
+         
 block content
     each blog in blogs
         #part(data-aos="fade-up",data-aos-duration="600")
@@ -39,9 +39,7 @@ block js
     script(src="https://unpkg.com/aos@2.3.1/dist/aos.js")
     script.
         AOS.init();
-        
-
-    
+     
 
             
 
