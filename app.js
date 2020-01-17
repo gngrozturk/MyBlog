@@ -99,7 +99,10 @@ passport.deserializeUser((user, done) => {
 function isUserAuthenticated(req, res, next) {
   console.log(req.user);
   if (req.user) {
-    if (req.user.id === process.env.GOOGLE_PERSONAL_ID) {
+    if (req.user.id === process.env.GOOGLE_PERSONAL_ID_1) {
+      next();
+    }
+    else if(req.user.id === process.env.GOOGLE_PERSONAL_ID_2){
       next();
     } else {
       req.logout();
@@ -227,7 +230,7 @@ app.get("/logout", (req, res) => {
 });
 
 // Düzenleme sayfası
-app.get("/blog/:id/edit", passBlog, function(req, res) {
+app.get("/blog/:id/edit",isUserAuthenticated,passBlog, function(req, res) {
   res.render("blog/edit", {
     blog: req.blog
   });
@@ -239,7 +242,8 @@ app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function(
 ) {
   var payload = {
     title: req.body.title,
-    body: req.body.content
+    body: req.body.content,
+    author:req.body.author
   };
   if (req.file) {
     fs.unlinkSync(path.join(__dirname, "public", "images", req.blog.image));

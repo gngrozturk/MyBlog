@@ -1,34 +1,33 @@
-.paragraf {
+/*blog spoiler*/
+.paragraf { 
   font-family: "Roboto", sans-serif;
   text-indent: 45px;
 }
+/*form command*/
 .p-form {
   font-family: "Open Sans", sans-serif;
 }
+/*author*/
 .paragraf2 {
   font-size: 30px;
   text-align: right;
   font-family: "Roboto", sans-serif;
 }
-
+/*about*/
 .paragraf3 {
   font-family: "Roboto", sans-serif;
   font-size: 18px;
 }
+/*author in spoiler*/
 .paragraf4 {
   font-size: 20px;
   text-align: right;
   font-family: "Roboto", sans-serif;
 }
 
-.banner 
-  {
-    max-height:100vh;
-  }
-
 .add,
 .edit {
-  margin-top: 100px;
+  margin-top: 130px;
   font-family: "Open Sans", sans-serif;
 }
 #part {
@@ -231,14 +230,14 @@
   color: rgb(119, 188, 209);
   font-size: 40px;
   transition: 0.3s;
-}
-#spotify {
-  color: #1ed760;
+} 
+#skype {
+  color: #00A7E6;
   font-size: 30px;
   margin-top: 55px;
 }
-#spotify:hover {
-  color: rgb(111, 224, 151);
+#skype:hover {
+  color: rgb(143, 210, 235);
   font-size: 40px;
   transition: 0.3s;
 }
@@ -246,36 +245,105 @@ body > footer > div > div {
   text-align: center;
 }
 
-@media screen and (max-width: 320px)
+
+.banner
 {
-  .captions {
-    font-family: "Raleway", sans-serif;
-    text-align: left;
-    color:#ffff;
-    margin-bottom: 2px;
-  }
-  .captions-2 {
-    font-family: "Raleway", sans-serif;
-    text-align: left;
-    margin-bottom: 0px;
-    font-size: 10px;
-  }
-  .banner 
+  max-height:100vh;
+}
+.captions
+{
+  font-size:45px;
+  text-align: left;
+  margin-bottom: 5px;
+  font-family: 'Raleway', sans-serif;
+}
+.captions-2
+{
+  font-size:20px;
+  text-align: left;
+  margin-bottom: 70px;
+  font-family: 'Raleway', sans-serif;
+}
+
+@media screen and (max-width: 320px) 
+{
+  .banner
   {
-    height:40vh;
+    height:55vh !important;
+  }
+  .captions 
+  {
+    font-size:12px !important;
+    text-align: left;
+    margin-bottom: 1px;
+    margin-top:10px; 
+  }
+  .captions-2
+  {
+    font-size:12px !important;
+    text-align: left;
+    margin-bottom: 1px;
+  }
+}
+
+
+@media screen and (width: 375px)
+{
+  .banner
+  {
+    height:42vh !important;
+  }
+  .captions 
+  {
+  font-size:18px !important;
+  text-align: left;
+  margin-bottom: 1px;
+  margin-top:10px;
+  font-family: 'Raleway', sans-serif;
+  }
+  .captions-2
+  {
+  font-size:13px !important;
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  }
+}
+
+@media screen and (width: 768px)  
+{
+  .banner
+  {
+    max-height:28vh;
+  }
+  .captions 
+  {
+    font-size:25px !important;
+    text-align: left;
+    margin-bottom: 2px;
+    margin-top:30px;
+    font-family: 'Raleway', sans-serif;
+  }
+  .captions-2
+  {
+    font-size:14px !important;
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
   }
 }
 
 @media screen and (max-width: 992px) {
+
   #navbar1 
   {
     position: relative;
   }
-  .add,.edit {
+  .add,.edit 
+  {
     margin-top: 50px;
     font-family: "Open Sans", sans-serif;
   }
-  .titles {
+  .titles 
+  {
     border-bottom: 1px solid;
     border-image-source: linear-gradient(45deg, #1da1f2, #f5f5f5);
     border-image-slice: 1;
@@ -290,59 +358,46 @@ body > footer > div > div {
     font-family: "Montserrat", sans-serif;
     text-align: center;
   }
-  .kapsamli {
+  .kapsamli 
+  {
     margin-top: 50px;
   }
  
-  .form {
+  .form 
+  {
     margin-top: 30px;
   }
-  #part {
+  #part 
+  {
     margin-bottom: 150px;
     margin-top: 100px;
   }
-
-  .footer {
+  .footer 
+  {
     background-color: #2d2d2d;
     height: 200px;
     color: #ffff;
   }
-  .captions {
-    font-family: "Raleway", sans-serif;
-    text-align: left;
-    color:#ffff;
-    margin-bottom: 2px;
-  }
-  .captions-2 {
-    font-family: "Raleway", sans-serif;
-    text-align: left;
-    margin-bottom: 0px;
-    font-size: 10px;
-  }
-  
-  .banner 
-  {
-    max-height:40vh;
-  }
-}
 
-@media screen and (min-width: 768px)
-{
+  .banner
+  {
+    height:48vh;
+  }
   .captions 
   {
-    font-family: "Raleway", sans-serif;
-    text-align: left;
-    color:#ffff;
-    margin-bottom: 15px;
-    font-size: 50px;
+  font-size:19px !important;
+  text-align: left;
+  margin-bottom: 1px;
+  margin-top:10px;
+  font-family: 'Raleway', sans-serif;
   }
-  .captions-2 
+  .captions-2
   {
-    font-family: "Raleway", sans-serif;
-    text-align: left;
-    color: #ffff;
-    margin-bottom: 90px;
-    font-size: 18px;
+  font-size:15px !important;
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 1px;
   }
 
 }
+

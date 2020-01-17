@@ -7,19 +7,19 @@ block content
     h1.edit Blog Düzenle
     form.mt-5#addForm(method="POST" actions=actions="/blog/" + blog.id + '/edit' enctype="multipart/form-data")
         label(for='exampleFormControlTextarea1')
-            .p-form Paylaşmak İstediğiniz Metnin Başlığını Giriniz
+            .p-form.mt-3 Paylaşmak İstediğiniz Metnin Başlığını Giriniz
         .input-group
             input.form-control#title(type="text" name="title" aria-label='With textarea', value=blog.title, required)
         br
         label(for='author') 
-            .p-form Yazarın Adını Giriniz
+            .p-form.mt-3 Yazarın Adını Giriniz
         .input-group
             input.form-control(type="text" name="author" id="author",value=blog.author required)
         br
         label(for='exampleFormControlTextarea1') 
-            .p-form Paylaşmak İstediğiniz Metni Giriniz
+            .p-form.mt-3 Paylaşmak İstediğiniz Metni Giriniz
         textarea.form-control#mdtextarea(aria-label='With textarea' name="content", required)= blog.body
-        .form-group.mt-5
+        .form-group.mt-3
             label(for='exampleFormControlFile1') 
                 .p-form Görsel Materyal Eklemek İçin Lütfen Dosya Seçiniz
                 br
