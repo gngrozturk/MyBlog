@@ -258,7 +258,7 @@ app.get("/users/:slug/blogs", (req, res) => {
   const { slug } = req.params;
   Blog.find({ author_slug: slug }, (err, blog) => {
     if (err) throw err;
-    res.render('index', {blogs: blog});
+    res.render('texts', {blogs: blog});
   })
 })
 
