@@ -28,16 +28,17 @@ mongoose.connect(process.env.DATABASE_URI, {
 let db = mongoose.connection;
 
 // db açık mı
-db.once("open", function () {
+db.once("open", function() {
   console.log("Databaseye bağlanıldı");
 });
 
-db.on("error", function (err) {
+db.on("error", function(err) {
   console.log(err);
 });
 
 // Model çağırma
 let Blog = require("./models/blog");
+let User = require("./models/user");
 
 // View engine
 app.set("views", path.join(__dirname, "templates"));
@@ -62,10 +63,24 @@ app.use(
 // Static dosyalar
 app.use(express.static(path.join(__dirname, "public")));
 
+const parseDate =  (dateStr) => {
+
+  const d = new Date(dateStr);
+  let month = "" + (d.getMonth() + 1);
+  let day = "" + d.getDate();
+  const year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [day, month, year].join("-");
+}
+
 // flash mesajları
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.messages = require("express-messages")(req, res);
+  res.locals.parseDate = parseDate
   next();
 });
 
@@ -81,8 +96,25 @@ passport.use(
       callbackURL: process.env.GOOGLE_CALLBACK_URL
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(JSON.stringify(profile));
-      done(null, profile);
+      console.log(profile)
+      User.findOne({ googleId: profile.id }).exec((err, data) => {
+        if (err) throw err;
+        console.log(data)
+        if (data === null) {
+          done(null, {});
+        } else {
+          data.update(
+            {
+              googleData: profile
+            },
+            (err, _) => {
+              if (err) throw err;
+              done(null, data);
+            }
+          );
+          
+        }
+      });
     }
   )
 );
@@ -95,32 +127,28 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
+
 // Middleware to check if the user is authenticated
 function isUserAuthenticated(req, res, next) {
-  //console.log(req.user);
-  if (req.user) {
-    if (req.user.id === process.env.GOOGLE_PERSONAL_ID_1) {
-      next();
-    }
-    else if (req.user.id === process.env.GOOGLE_PERSONAL_ID_2) {
-      next();
-    } else {
-      req.logout();
-      res.redirect("/");
-    }
+  if (req.user && !isEmpty(req.user)) {
+    next();
   } else {
     res.redirect("/login");
   }
 }
 
 app.use("*", (req, res, next) => {
+  console.log(req.user)
   res.locals.user = req.user || null;
   next();
 });
 
 // requsete blog u geçir
-const passBlog = function (req, res, next) {
-  Blog.findById(req.params.id, function (err, blog) {
+const passBlog = function(req, res, next) {
+  Blog.findById(req.params.id, function(err, blog) {
     req.blog = blog;
     next();
   });
@@ -138,39 +166,47 @@ app.get("/api/isauth", (req, res) => {
 });
 
 // İndex route
-app.get("/", function (req, res) {
-  res.render("index", {blogs: []});
+app.get("/", function(req, res) {
+  res.render("index", { blogs: [] });
 });
 
 // Blog ekleme
-app.get("/blog/add", isUserAuthenticated, function (req, res) {
+app.get("/blog/add", isUserAuthenticated, function(req, res) {
   res.render("blog/add", {
     title: "Blog ekle"
   });
 });
 // Blog kayıt(POST)
-app.post("/blog/add", upload.single("blog_image"), function (req, res) {
-  console.log(req.body);
+app.post("/blog/add", upload.single("blog_image"), function(req, res) {
   let image = req.file;
-  console.log(image);
   let image_path = image.filename;
 
-  let blog = new Blog({
-    title: req.body.title,
-    author: req.user.displayName,
-    body: req.body.content,
-    image: image_path
-  });
-  console.log(blog);
-  blog.save(function (err) {
-    if (err) return err;
-    res.redirect("/");
-  });
+  User.findOne({ googleId: req.user.googleId })
+    .populate("posts")
+    .exec((err, user) => {
+      if (err) throw err;
+      let blog = new Blog({
+        title: req.body.title,
+        author: user._id,
+        body: req.body.content,
+        image: image_path
+      });
+      blog.save(
+        (err,
+        _ => {
+          if (err) throw err;
+          user.posts.push(blog);
+          user.save((err, _) => {
+            if (err) throw err;
+            res.redirect("/");
+          });
+        })
+      );
+    });
 });
 
-
 // Detay sayfası
-app.get("/blog/:id", passBlog, function (req, res) {
+app.get("/blog/:id", passBlog, function(req, res) {
   res.render("blog/detail", {
     blog: req.blog,
     convertedContent: md.render(req.blog.body)
@@ -178,7 +214,7 @@ app.get("/blog/:id", passBlog, function (req, res) {
 });
 
 // Hakkımda sayfası
-app.get("/about", function (req, res) {
+app.get("/about", function(req, res) {
   res.render("about");
 });
 
@@ -221,13 +257,13 @@ app.get("/logout", (req, res) => {
 });
 
 // Düzenleme sayfası
-app.get("/blog/:id/edit", isUserAuthenticated, passBlog, function (req, res) {
+app.get("/blog/:id/edit", isUserAuthenticated, passBlog, function(req, res) {
   res.render("blog/edit", {
     blog: req.blog
   });
 });
 
-app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function (
+app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function(
   req,
   res
 ) {
@@ -241,29 +277,38 @@ app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function (
     payload.image = req.file.filename;
   }
 
-  Blog.update({ _id: req.params.id }, payload, function (err) {
+  Blog.update({ _id: req.params.id }, payload, function(err) {
     if (err) return err;
     res.redirect("/");
   });
 });
 
-app.delete("/blog/:id", function (req, res) {
-  Blog.remove({ _id: req.params.id }, function (err) {
+app.delete("/blog/:id", function(req, res) {
+  Blog.remove({ _id: req.params.id }, function(err) {
     if (err) return err;
     res.sendStatus(200);
   });
 });
 
-app.get("/users/:slug/blogs", (req, res) => {
-  const { slug } = req.params;
-  Blog.find({ author_slug: slug }, (err, blog) => {
+app.get("/users/:username/blogs", (req, res) => {
+  const { username } = req.params;
+  User.findOne({ username }).exec((err, user) => {
     if (err) throw err;
-    res.render('texts', {blogs: blog});
-  })
-})
+    Blog.find({ author: user })
+      .populate("author")
+      .sort("-pub_date")
+      .exec((err, blogs) => {
+        if (err) throw err;
+        blogs = blogs.map(b => {
+          b["spoiler"] = elipsis(b.body, 200)
+          return b
+        })
 
+        res.render("texts", { blogs });
+      });
+  });
+});
 
-
-app.listen(8000, function () {
+app.listen(8000, function() {
   console.log("Server su portdan calışıyor: 8000");
 });

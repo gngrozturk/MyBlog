@@ -6,7 +6,7 @@ block content
             .row.my-4
                 .col-lg-12
                     h1.display-4.titles= blog.title 
-                    .p.paragraf4 #{blog.author} | 18.11.2019
+                    .p.paragraf4 #{blog.author.googleData.displayName} | #{parseDate(blog.pub_date)}
             .row
                 .col-lg-7
                     p.paragraf= blog.spoiler
@@ -17,7 +17,7 @@ block content
             .row.mt-3
                 .col-lg-12
                     .d-flex.align-items-end
-                        a.btn.btn-grad.p-3(href="/blog/" + blog.id) Devamını Oku
+                        a.btn.btn-grad.p-3(href="/blog/" + blog._id) Devamını Oku
                             i.ml-3.fas.fa-angle-double-right
                         
         
