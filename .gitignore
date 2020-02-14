@@ -6,5 +6,6 @@ public/components/simplemde/*
 public/images/*
 !public/images/.keep
 !public/images/LOGO_2.png
+!public/images/image_*
 !public/images/site/
 .env
