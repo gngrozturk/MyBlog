@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node .",
     "startprod": "node .",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "postinstall": "bower install bootstrap jquery showdown simplemde"
   },
   "author": "gungor",
   "license": "ISC",
