@@ -17,7 +17,7 @@ const dotenv = require("dotenv").config();
 
 const app = express();
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
 const upload = multer({
   dest: "public/images"
@@ -65,8 +65,7 @@ app.use(
 // Static dosyalar
 app.use(express.static(path.join(__dirname, "public")));
 
-const parseDate =  (dateStr) => {
-
+const parseDate = dateStr => {
   const d = new Date(dateStr);
   let month = "" + (d.getMonth() + 1);
   let day = "" + d.getDate();
@@ -76,13 +75,13 @@ const parseDate =  (dateStr) => {
   if (day.length < 2) day = "0" + day;
 
   return [day, month, year].join("-");
-}
+};
 
 // flash mesajları
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.messages = require("express-messages")(req, res);
-  res.locals.parseDate = parseDate
+  res.locals.parseDate = parseDate;
   next();
 });
 
@@ -98,10 +97,11 @@ passport.use(
       callbackURL: process.env.GOOGLE_CALLBACK_URL
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(profile)
+      console.log(profile);
+      User.find((data, err) => {
+      });
       User.findOne({ googleId: profile.id }).exec((err, data) => {
         if (err) throw err;
-        console.log(data)
         if (data === null) {
           done(null, {});
         } else {
@@ -114,7 +114,6 @@ passport.use(
               done(null, data);
             }
           );
-          
         }
       });
     }
@@ -130,7 +129,7 @@ passport.deserializeUser((user, done) => {
 });
 
 function isEmpty(obj) {
-  return Object.keys(obj).length === 0;
+  return Object.entries(obj).length === 0 && obj.constructor === Object;
 }
 
 // Middleware to check if the user is authenticated
@@ -138,13 +137,13 @@ function isUserAuthenticated(req, res, next) {
   if (req.user && !isEmpty(req.user)) {
     next();
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 }
 
 app.use("*", (req, res, next) => {
-  console.log(req.user)
-  res.locals.user = req.user || null;
+  console.log(req.user);
+  res.locals.user = (req.user && !isEmpty(req.user)) ? req.user : null;
   next();
 });
 
@@ -307,9 +306,9 @@ app.get("/users/:username/blogs", (req, res) => {
       .exec((err, blogs) => {
         if (err) throw err;
         blogs = blogs.map(b => {
-          b["spoiler"] = elipsis(b.body, 300)
-          return b
-        })
+          b["spoiler"] = elipsis(b.body, 300);
+          return b;
+        });
 
         res.render("texts", { blogs });
       });
