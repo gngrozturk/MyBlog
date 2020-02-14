@@ -1,25 +1,36 @@
 /*blog spoiler*/
-.paragraf { 
+.paragraf 
+{ 
+  font-family: "Roboto", sans-serif;
+  text-indent: 45px;
+  font-size: 1rem;
+}
+
+/*form command*/
+.p-form 
+{
+  font-family: "Open Sans", sans-serif;
+}
+
+.info
+{
   font-family: "Roboto", sans-serif;
   text-indent: 45px;
 }
-/*form command*/
-.p-form {
-  font-family: "Open Sans", sans-serif;
-}
-/*author*/
-.paragraf2 {
-  font-size: 30px;
-  text-align: right;
+
+.infoC
+{
   font-family: "Roboto", sans-serif;
+  text-indent: 0px;
 }
-/*about*/
-.paragraf3 {
+
+.info_1
+{
   font-family: "Roboto", sans-serif;
-  font-size: 18px;
 }
 /*author in spoiler*/
-.paragraf4 {
+.paragraf4
+{
   font-size: 20px;
   text-align: right;
   font-family: "Roboto", sans-serif;
@@ -27,49 +38,34 @@
 
 .add,
 .edit {
-  margin-top: 130px;
-  font-family: "Open Sans", sans-serif;
-}
-#part {
-  margin-bottom: 150px;
-  margin-top: 200px;
+  font-family: 'Raleway', sans-serif;
 }
 
-.nav-link {
-  font-size: 18px;
-  margin-right: 20px;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  color: #f0f0f0;
+#navbarSupportedContent .nav-item
+{
+ text-align: center;
+ font-family: "Open Sans", sans-serif;
 }
-.icon-active {
+
+#navbarSupportedContent > ul > li.nav-item.dropdown.mr-3.show > div > a
+{
+  background-color: white;
+  text-align: center;
+}
+
+.icon-active
+{
   color: #1ed760;
 }
-.me {
-  border-radius: 8px;
-}
-.titles {
-  border-bottom: 2px solid;
-  border-image-source: linear-gradient(45deg, #1da1f2, #f5f5f5);
-  border-image-slice: 1;
-  font-family: "Montserrat", sans-serif;
+
+.background-color
+{
+  background-color: white;
 }
 
-.titles-2 {
-  border-bottom: 2px solid;
-  border-image-source: linear-gradient(45deg, #1da1f2, #f5f5f5);
-  border-image-slice: 1;
-  font-family: "Montserrat", sans-serif;
-  font-size: 45px;
-}
-
-.kapsamli {
-  margin-top: 120px;
-}
-
-.btn-grad {
-  border-radius: 30px 7px 30px 7px;
-  padding: 1em 3em;
+.btn-grad
+{
+  border-radius: 30px;
   background-size: 200% auto;
   color: white;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -81,15 +77,157 @@
   );
   transition: 0.5s;
   font-family: "Open Sans", sans-serif;
-  text-align: center;
 }
-.btn-grad:hover {
+
+.btn-grad:hover
+{
   background-position: right center;
   text-decoration: none;
   color: white;
 }
 
-.btn-edit {
+.carousel-item
+{
+  height: 100vh;
+  object-fit: cover;
+}
+
+#profil_1
+{
+  border-radius: 15px;  
+  height: 200px;
+}
+
+#profil_2
+{
+  border-radius: 20px;  
+  max-height: 360px;
+}
+
+#name_index
+{
+  font-family: 'Raleway', sans-serif;
+}
+
+#writers
+{
+  margin-bottom: 70px;
+  font-family: 'Raleway', sans-serif;
+  border-bottom: #26a0da 1px solid;
+}
+
+.title_about
+{
+  font-family: 'Raleway', sans-serif;
+}
+
+.titles
+{
+  border-bottom: 2px solid;
+  border-image-source: linear-gradient(45deg, #1da1f2, #f5f5f5);
+  border-image-slice: 1;
+  font-family: 'Raleway', sans-serif;
+}
+
+.footer
+{
+  background-color: #2d2d2d;
+  color: #ffff;
+}
+
+#yt
+{
+  color: #FF0000;
+  font-size: 30px;
+  justify-content: left;
+}
+
+#yt:hover
+{
+  color: rgb(245, 101, 101);
+  transition: 0.3s;
+}
+
+#mail
+{
+  font-size: 30px;
+  color: #ffcc00;
+ 
+}
+
+#mail:hover
+{
+  color: #eed15b;
+  transition: 0.3s;
+}
+
+#tw
+{
+  font-size: 30px;
+  color: #1da1f2;
+}
+
+#tw:hover
+{
+  color: #86cdf9;
+  transition: 0.3s;
+}
+
+#instagram
+{
+  font-size: 30px;
+  color: #f03225ef;
+}
+
+#instagram:hover
+{
+  color: #e06b63ef;
+  transition: 0.3s;
+}
+
+#in
+{
+  color: #0274b3;
+  font-size: 30px;
+}
+
+#in:hover
+{
+  color: rgb(119, 188, 209);
+  transition: 0.3s;
+} 
+
+#spotify
+{
+  color: #1ED760;
+  font-size: 30px;
+}
+
+#spotify:hover
+{
+  color: rgb(113, 228, 153);
+  transition: 0.3s;
+}
+
+body > footer > div > div
+{
+  text-align: center;
+}
+
+#under
+{
+  background-color: #242424;
+  color: #ffff;
+}
+
+#name
+{
+  font-family: "Yellowtail", cursive;
+  font-size: 25px;
+}
+
+.btn-edit
+{
   border-radius: 30px;
   padding: 1em 3em;
   background-size: 200% auto;
@@ -106,13 +244,15 @@
   text-align: center;
 }
 
-.btn-edit:hover {
+.btn-edit:hover
+{
   background-position: right center;
   text-decoration: none;
   color: white;
 }
 
-.btn-delete {
+.btn-delete
+{
   border-radius: 30px;
   padding: 1em 3em;
   background-size: 200% auto;
@@ -129,13 +269,15 @@
   text-align: center;
 }
 
-.btn-delete:hover {
+.btn-delete:hover
+{
   background-position: right center;
   text-decoration: none;
   color: white;
 }
 
-.btn-send {
+.btn-send
+{
   border-radius: 30px;
   padding: 1em 3em;
   background-size: 200% auto;
@@ -152,252 +294,163 @@
   text-align: center;
 }
 
-.btn-send:hover {
+.btn-send:hover
+{
   background-position: right center;
   text-decoration: none;
   color: white;
 }
-.rn {
-  margin-left: 18px;
-  color: #61dafb;
-}
-.check {
-  color: #1ed760;
-  margin-right: 5px;
-}
-#under {
-  background-color: #242424;
-  color: #ffff;
-}
-#name {
-  font-family: "Yellowtail", cursive;
-  font-size: 25px;
+
+#part
+{
+  margin-bottom: 150px;
 }
 
-.footer {
-  background-color: #2d2d2d;
-  height: 140px;
-  color: #ffff;
+
+.output {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+}
+.output h1 {
+  font-size: 35px;
+}
+/* Cursor Styling */
+.cursor::after {
+  content: '';
+  display: inline-block;
+  margin-left: 3px;
+  background-color: #fff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+h1.cursor::after {
+  height: 24px;
+  width: 4px;
+}
+p.cursor::after {
+  height: 13px;
+  width: 2px;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+ }
+  49% {
+    opacity: 1;
+ }
+  50% {
+    opacity: 0;
+ }
+  100% {
+    opacity: 0;
+ }
 }
 
-#git {
-  color: #f0f0f0;
-  font-size: 30px;
-  color: #ffff;
-  margin-top: 55px;
-}
-#git:hover {
-  font-size: 40px;
-  color: rgb(221, 212, 212);
-  transition: 0.3s;
-}
-#mail {
-  font-size: 30px;
-  color: #ffcc00;
-  margin-top: 55px;
-}
-#mail:hover {
-  font-size: 40px;
-  color: #eed15b;
-  transition: 0.3s;
-}
-#tw {
-  font-size: 30px;
-  color: #1da1f2;
-  margin-top: 55px;
-}
-#tw:hover {
-  font-size: 40px;
-  color: #86cdf9;
-  transition: 0.3s;
-}
-#instagram {
-  font-size: 30px;
-  color: #d9163a;
-  margin-top: 55px;
-}
-#instagram:hover {
-  font-size: 40px;
-  color: #f2738a;
-  transition: 0.3s;
-}
-#in {
-  color: #0274b3;
-  font-size: 30px;
-  margin-top: 55px;
-}
-#in:hover {
-  color: rgb(119, 188, 209);
-  font-size: 40px;
-  transition: 0.3s;
-} 
-#skype {
-  color: #00A7E6;
-  font-size: 30px;
-  margin-top: 55px;
-}
-#skype:hover {
-  color: rgb(143, 210, 235);
-  font-size: 40px;
-  transition: 0.3s;
-}
-body > footer > div > div {
+.description{
+  min-height:60vh;
+  background-color:#5f9bb8;
   text-align: center;
 }
 
 
-.banner
-{
-  max-height:100vh;
-}
-.captions
-{
-  font-size:45px;
-  text-align: left;
-  margin-bottom: 5px;
-  font-family: 'Raleway', sans-serif;
-}
-.captions-2
-{
-  font-size:20px;
-  text-align: left;
-  margin-bottom: 70px;
-  font-family: 'Raleway', sans-serif;
-}
+@media screen and (max-width:992px){
 
-@media screen and (max-width: 320px) 
-{
-  .banner
-  {
-    height:55vh !important;
+  .paragraf 
+  { 
+    font-family: "Roboto", sans-serif;
+    text-indent: 25px;
+    font-size: 1rem;
   }
-  .captions 
-  {
-    font-size:12px !important;
-    text-align: left;
-    margin-bottom: 1px;
-    margin-top:10px; 
-  }
-  .captions-2
-  {
-    font-size:12px !important;
-    text-align: left;
-    margin-bottom: 1px;
-  }
-}
 
+  .carousel-item
+  {
+    height:auto;
+    object-fit:contain;
+  }
 
-@media screen and (width: 375px)
-{
-  .banner
-  {
-    height:42vh !important;
-  }
-  .captions 
-  {
-  font-size:18px !important;
-  text-align: left;
-  margin-bottom: 1px;
-  margin-top:10px;
-  font-family: 'Raleway', sans-serif;
-  }
-  .captions-2
-  {
-  font-size:13px !important;
-  text-align: left;
-  font-family: 'Raleway', sans-serif;
-  }
-}
-
-@media screen and (width: 768px)  
-{
-  .banner
-  {
-    max-height:28vh;
-  }
-  .captions 
-  {
-    font-size:25px !important;
-    text-align: left;
-    margin-bottom: 2px;
-    margin-top:30px;
-    font-family: 'Raleway', sans-serif;
-  }
-  .captions-2
-  {
-    font-size:14px !important;
-    text-align: left;
-    font-family: 'Raleway', sans-serif;
-  }
-}
-
-@media screen and (max-width: 992px) {
-
-  #navbar1 
+  .navbar
   {
     position: relative;
   }
-  .add,.edit 
+
+  .titles
   {
-    margin-top: 50px;
-    font-family: "Open Sans", sans-serif;
-  }
-  .titles 
-  {
-    border-bottom: 1px solid;
+    font-size: 50px;
+    border-bottom: 2px solid;
     border-image-source: linear-gradient(45deg, #1da1f2, #f5f5f5);
     border-image-slice: 1;
-    font-family: "Montserrat", sans-serif;
-    text-align: center;
-  }
-  .titles-2 
-  {
-    border-bottom: 1px solid;
-    border-image-source: linear-gradient(45deg, #1da1f2, #f5f5f5);
-    border-image-slice: 1;
-    font-family: "Montserrat", sans-serif;
-    text-align: center;
-  }
-  .kapsamli 
-  {
-    margin-top: 50px;
-  }
- 
-  .form 
-  {
-    margin-top: 30px;
-  }
-  #part 
-  {
-    margin-bottom: 150px;
-    margin-top: 100px;
-  }
-  .footer 
-  {
-    background-color: #2d2d2d;
-    height: 200px;
-    color: #ffff;
+    font-family: 'Raleway', sans-serif;
   }
 
-  .banner
+  .title_about
   {
-    height:48vh;
+    text-align: center;
   }
-  .captions 
+
+  #name_index
   {
-  font-size:19px !important;
-  text-align: left;
-  margin-bottom: 1px;
-  margin-top:10px;
-  font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    text-align: center;
   }
-  .captions-2
+
+  #part
   {
-  font-size:15px !important;
-  text-align: left;
-  font-family: 'Raleway', sans-serif;
-  margin-bottom: 1px;
+    margin-bottom: 100px;
+  }
+  .info_1
+  {
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    font-size: 20px;
+  }
+  .div
+  {
+    text-align: center;
+  }
+
+  #writers
+  {
+    margin-bottom: 70px;
+    font-family: 'Raleway', sans-serif;
+    border-bottom: #26a0da 1px solid;
+  }
+
+  .output h1
+  {
+    font-size: 25px;
+  }
+
+  .description
+  {
+    min-height: 25vh;
+  }
+}
+
+@media screen and (min-width:992px)
+{
+
+  body > div > div > div.paragraf.container
+  {
+    max-width: 960px;
+    margin-top:30px;
+  } 
+  
+  .about.container
+  {
+    max-width: 960px;
+  }
+
+  .vertical
+  {
+   
+    padding-top: 20vh;
+  }
+
+  body > div.description > div.container
+  {
+    max-width: 900px;
   }
 
 }
-

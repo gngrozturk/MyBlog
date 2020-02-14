@@ -7,13 +7,12 @@ block content
         h1.display-4.titles= blog.title
         br
         .row
-            .col-lg-12
-                img.img-fluid.my-3(src="/images/" + blog.image, width="100%")
+            .col-lg-12.text-center
+                img.img-fluid.my-4(src="/images/" + blog.image, width="80%")
 
-        .paragrafD.paragraf!= convertedContent
-        br
-        p.paragraf2 #{blog.author}
-
+        .paragraf.container!= convertedContent
+    
+            p.paragraf4 #{parseDate(blog.pub_date)}
         if user    
             a.btn.btn-edit.mt-5(href="/blog/" + blog.id + '/edit') Düzenle 
                 i.ml-2.fas.fa-pencil-alt

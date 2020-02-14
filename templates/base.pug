@@ -7,74 +7,90 @@ html(lang="en")
         link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous')
         link(rel="stylesheet" href="/components/css/style.css")
         link(href='https://fonts.googleapis.com/css?family=Yellowtail&display=swap' rel='stylesheet')
-        link(href='https://fonts.googleapis.com/css?family=Montserrat&display=swap' rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet')
-        link(href='https://fonts.googleapis.com/css?family=Raleway&display=swap' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Raleway:300&display=swap', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=Open+Sans&display=swap', rel='stylesheet')
         link(href='https://unpkg.com/aos@2.3.1/dist/aos.css', rel='stylesheet')
 
         block styles
 
         title #{title}
-    body(style="background-color:#F5F5F5")
-        nav#navbar1.navbar.navbar-expand-lg.navbar-light.ml-auto.bg-light.fixed-top
-            .container
-                a.navbar-brand(style="font-size:40px;font-family: 'Yellowtail', cursive;" href='/') Güngör Öztürk
-                button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-                    span.navbar-toggler-icon
-                #navbarSupportedContent.collapse.container.navbar-collapse.ml-auto
-                    ul.navbar-nav.ml-auto
+    body   
+        nav.navbar.navbar-expand-lg.navbar-light.ml-auto.background-color.sticky-top
+            a.ml-4(href='/')
+                img(src='/images/img/LOGO_2.png', alt='Logo', width='115px')
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarSupportedContent.collapse.navbar-collapse.ml-auto
+                ul.navbar-nav.ml-auto
+                    li.nav-item.dropdown.mr-3
+                        a#navbarDropdown.nav-link(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            | Biz Kimiz ?
+                        .dropdown-menu(aria-labelledby='navbarDropdown')
+                            a.dropdown-item(href='/about') Görüşümüz & Görevimiz
+                            a.dropdown-item(href='/writers') Yazarlar        
+                    li.nav-item.dropdown.mr-3
+                        a#navbarDropdown.nav-link(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            | Sağlık Bilimleri
+                        .dropdown-menu(aria-labelledby='navbarDropdown')
+                            a.dropdown-item(href='#') Kübra Nur Bektaş
+                            a.dropdown-item(href='#') Melih Can Ekşioğlu   
+                    li.nav-item.dropdown.mr-3
+                        a#navbarDropdown.nav-link(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            | Mühendislik Bilimleri
+                        .dropdown-menu(aria-labelledby='navbarDropdown')
+                            a.dropdown-item(href='http://localhost:8000/users/gungor/blogs') Güngör Öztürk
+                            a.dropdown-item(href='#') Furkan Öztekin
+                    li.nav-item.dropdown.mr-3
+                        a#navbarDropdown.nav-link(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            | Çocuk Gelişimi
+                        .dropdown-menu(aria-labelledby='navbarDropdown')
+                            a.dropdown-item(href='#') Feyza Ceren Koçer
+                    li.nav-item.mr-3
+                        a.nav-link(href='') Sanat
+                    if user
                         li.nav-item
-                            a.nav-link(href='/about') Hakkımda
-                                i.ml-2.fas.fa-user-tie
-                        li.nav-item
-                            a.nav-link(href='#') Projelerim 
-                                i.ml-2.fas.fa-laptop
-                        if user
-                            li.nav-item
-                                a.nav-link(href='/blog/add') Blog Oluştur
-                                    i.ml-2.fas.fa-feather-alt
+                            a.nav-link(href='/blog/add') Blog Oluştur
                         if user
                             li.nav-item
                                 a.nav-link#exitbtn(href="#") #{user.googleData.given_name}
                                     i.icon-active.ml-2.fas.fa-user-circle
-                        else
-                            li.nav-item
-                                a.nav-link(href='/login') Yazar Girişi
-                                    i.ml-2.fas.fa-door-open
+                    else
+                        li.nav-item.mr-3
+                            a.btn.btn-grad.px-3(href='/login', role='button', aria-pressed='true') Yazar Girişi
 
-                
-
-        block banner
+        block description
 
         .container.main
             block content
+
         footer
             .footer.mt-5
                 .row.container.mx-auto
-                    .col-4.col-lg-2
-                       a(href='https://accounts.google.com/signin/v2/identifier?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2F%3Fhl%3DTR&followup=https%3A%2F%2Faccounts.google.com%2F%3Fhl%3DTR&hl=TR&flowName=GlifWebSignIn&flowEntry=ServiceLogin' target='_blank')
-                        i#mail.fas.fa-envelope 
-                    .col-4.col-lg-2
-                        a(href='https://github.com/gngrozturk' target='_blank')
-                            i#git.fab.fa-github
-                    .col-4.col-lg-2
-                        a(href='https://www.linkedin.com/in/g%C3%BCng%C3%B6r-%C3%B6zt%C3%BCrk-8224a6198/' target='_blank')
-                            i#in.i.fab.fa-linkedin-in
-                    .col-4.col-lg-2
-                        a(href='' target='_blank')
-                            i#tw.fab.fa-twitter
-                    .col-4.col-lg-2
-                        a(href='https://www.instagram.com/ozturkk.gungor/' target='_blank')
+                    .col-lg-1
+                    .col-4.col-lg-2.py-lg-5.py-4
+                        a(href='mailto:betikblog@gmail.com', target='_blank')
+                            i#mail.fas.fa-envelope
+                    .col-4.col-lg-2.py-lg-5.py-4
+                        a(href='https://instagram.com/betik.blog?igshid=1dx45f6uvds9i', target='_blank')
                             i#instagram.fab.fa-instagram
-                    .col-4.col-lg-2
-                        a(href='https://open.spotify.com/user/zf8rm9ls2w5sy4h400wi2spqh?si=kEb0825WTuqfxUCOW0FS6g' target='_blank')
-                            i#skype.fab.fa-skype
-                    
-            .row.mx-auto#under.p-2
-                .p.mx-auto 
-                    |© Copyright by 
-                    span#name.ml-2 Güngör Öztürk
+                    .col-4.col-lg-2.py-lg-5.py-4
+                        a(href='https://twitter.com/betikblog?s=08', target='_blank')
+                            i#tw.fab.fa-twitter
+                    .col-6.col-lg-2.py-lg-5.py-4
+                        a(href='', target='_blank')
+                            i#yt.fab.fa-youtube
+                    .col-6.col-lg-2.py-lg-5.py-4
+                        a(href='', target='_blank')
+                            i#spotify.fab.fa-spotify
+                    .col-lg-1
+            #under.row.mx-auto.p-2
+                .p.mx-auto
+                    | © Copyright by 
+                    a(target='_blank', style='text-decoration: none; color:#fff', href='https://tr.linkedin.com/in/g%C3%BCng%C3%B6r-%C3%B6zt%C3%BCrk-8224a6198?trk=people-guest_people_search-card')
+                        span#name.ml-2 Güngör Öztürk
+        
+
                         
                    
 

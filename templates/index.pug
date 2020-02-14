@@ -1,16 +1,237 @@
 extends base
 
-block banner
-    #carouselExampleSlidesOnly.carousel.slide(data-ride='carousel')
-        .carousel-inner
-            .carousel-item
-            img.d-block.w-100.banner(src="images/site/banner.jpg", alt="banner")
-            .carousel-caption.banner
-                .p.captions Selam Ben Güngör,
-                .p.captions-2 Bu platformda "Hakkımda" kısmından beni daha yakından tanıyabilir,"Projelerim" kısmından çalışmalarımı görebilir ve Anasayfadan blog yazılarımı takip edebilirsiniz.İletişim bilgilerim sayfanın en altında olup bu kanallardan herhangi biriyle bana rahatlıkla ulaşabilirsiniz. Zaman ayırıp sayfamı ziyaret ettiğiniz için teşekkür ederim.
+block description
+    .description
+        .container
+            #output.output.vertical
+                    br
+                    h1.cursor
+                    p
+                
 
+    br
+    .container
+        .text-center.mt-3.mb-1
+            h2#writers.display-3 Yazarlar
+        .row(data-aos='fade-up', data-aos-duration='800')
+            .col-md-6.mt-3.mb-5
+                .row
+                    .col-md-4.text-center
+                        img#profil_1.img-fluid(src='images/img/image_5.jpeg', alt='')
+                    .col-md-8
+                        h3#name_index.display-5.mt-1 Melih Can Ekşioğlu
+                        br
+                        p.info_1
+                            | Nörofizyoloji
+                            br
+                            | Davranış Bilimi
+                            br
+                            | Beyin
+                        .div       
+                            a.mr-2(href='https://www.instagram.com/melih.eksioglu/', target='_blank')
+                                i#instagram.fab.fa-instagram
+                            a.ml-2(href='', target='_blank')
+                                    i#tw.fab.fa-twitter 
+                        
+                                  
+                .row.mt-3
+                    .col-md-12.text-center
+                        a.btn.btn-grad.px-3(href='#', role='button', aria-pressed='true') Profili Görüntüle                    
 
+            .col-md-6.mt-3.mb-5
+                .row
+                    .col-md-4.text-center
+                        img#profil_1.img-fluid(src='images/img/image_6.jpeg', alt='')
+                    .col-md-8
+                        h3#name_index.display-5.mt-1 Kübra Nur Bektaş
+                        br
+                        p.info_1
+                            | Nörofizyoloji
+                            br
+                            | Davranış Bilimi
+                            br
+                            | Beyin
+                        .div       
+                            a.mr-2(href='', target='_blank')
+                                i#instagram.fab.fa-instagram
+                            a.ml-2(href='', target='_blank')
+                                    i#tw.fab.fa-twitter  
+                        
+                .row.mt-3
+                    .col-md-12.text-center
+                        a.btn.btn-grad.px-3(href='#', role='button', aria-pressed='true') Profili Görüntüle
 
+        .row(data-aos='fade-up', data-aos-duration='800')
+            .col-md-6.my-5
+                .row
+                    .col-md-4.text-center
+                        img#profil_1.img-fluid(src='images/img/image_7.jpg', alt='')
+                    .col-md-8
+                        h3#name_index.display-5.mt-1 Güngör Öztürk
+                        br
+                        p.info_1
+                            | İnovasyon
+                            br
+                            | Yazılım
+                            br
+                            | Teknoloji
+                        .div       
+                            a.mr-2(href='https://www.instagram.com/ozturkk.gungor/', target='_blank')
+                                i#instagram.fab.fa-instagram
+                            a.ml-2(href='https://twitter.com/ozturkkgungorr?s=08', target='_blank')
+                                    i#tw.fab.fa-twitter 
+                        
+                                  
+                .row.mt-3
+                    .col-md-12.text-center
+                        a.btn.btn-grad.px-3(href='http://localhost:8000/users/gungor/blogs', role='button', aria-pressed='true') Profili Görüntüle                    
+
+            .col-md-6.my-5
+                .row
+                    .col-md-4.text-center
+                        img#profil_1.img-fluid(src='images/img/image_6.jpeg', alt='')
+                    .col-md-8
+                        h3#name_index.display-5.mt-1 Furkan Öztekin
+                        br
+                        p.info_1
+                            | Nörofizyoloji
+                            br
+                            | Davranış Bilimi
+                            br
+                            | Beyin
+                        .div       
+                            a.mr-2(href='https://instagram.com/oztekinfurkan03?igshid=5s0mt1owyqxl', target='_blank')
+                                i#instagram.fab.fa-instagram
+                            a.ml-2(href='', target='_blank')
+                                    i#tw.fab.fa-twitter  
+                        
+                .row.mt-3
+                    .col-md-12.text-center
+                        a.btn.btn-grad.px-3(href='#', role='button', aria-pressed='true') Profili Görüntüle
+
+        .row(data-aos='fade-up', data-aos-duration='800')
+            .col-md-6.my-5
+                .row
+                    .col-md-4.text-center
+                        img#profil_1.img-fluid(src='images/img/image_5.jpeg', alt='')
+                    .col-md-8
+                        h3#name_index.display-5.mt-1 Feyza Ceren Koçer
+                        br
+                        p.info_1
+                            | Gelişim
+                            br
+                            | Çocuk 
+                            br
+                            | Sanat
+                        .div       
+                            a.mr-2(href='https://instagram.com/feyzacerenkocer?igshid=spbm01kgv65a', target='_blank')
+                                i#instagram.fab.fa-instagram
+                            a.ml-2(href='https://twitter.com/FeyzaCerenKocer', target='_blank')
+                                    i#tw.fab.fa-twitter 
+                        
+                                  
+                .row.mt-3
+                    .col-md-12.text-center
+                        a.btn.btn-grad.px-3(href='#', role='button', aria-pressed='true') Profili Görüntüle                    
+
+             
+      
 
             
+block js
+    script(src="/components/js/index.js")
+    script(src="https://unpkg.com/aos@2.3.1/dist/aos.js")
+    script.
+        AOS.init();
+        // values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.
+        var i = 0,
+            a = 0,
+            isBackspacing = false,
+            isParagraph = false;
 
+        // Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
+        var textArray = [
+        "Betik'e Hoşgeldiniz !", 
+        "Burada farklı branşlardan ilginizi çekebilecek blog yazıları bulabilirsiniz",
+        " 'Biz Kimiz ?' seçeneğinden topluluğumuz ve yazarlarımız hakkında daha çok bilgiye sahip olabilirsiniz", 
+        " 'Profili Görüntüle' butonlarını kullanarak yazarların başka yazılarını da görüntüleyebilirsiniz",
+        
+        ];
+
+        // Speed (in milliseconds) of typing.
+        var speedForward = 100, //Typing Speed
+            speedWait = 1000, // Wait between typing and backspacing
+            speedBetweenLines = 1000, //Wait between first and second lines
+            speedBackspace = 25; //Backspace Speed
+
+        //Run the loop
+        typeWriter("output", textArray);
+
+        function typeWriter(id, ar) {
+        var element = $("#" + id),
+            aString = ar[a],
+            eHeader = element.children("h1"), //Header element
+            eParagraph = element.children("p"); //Subheader element
+        
+        // Determine if animation should be typing or backspacing
+        if (!isBackspacing) {
+            
+            // If full string hasn't yet been typed out, continue typing
+            if (i < aString.length) {
+            
+            // If character about to be typed is a pipe, switch to second line and continue.
+            if (aString.charAt(i) == "|") {
+                isParagraph = true;
+                eHeader.removeClass("cursor");
+                eParagraph.addClass("cursor");
+                i++;
+                setTimeout(function(){ typeWriter(id, ar); }, speedBetweenLines);
+                
+            // If character isn't a pipe, continue typing.
+            } else {
+                // Type header or subheader depending on whether pipe has been detected
+                if (!isParagraph) {
+                eHeader.text(eHeader.text() + aString.charAt(i));
+                } else {
+                eParagraph.text(eParagraph.text() + aString.charAt(i));
+                }
+                i++;
+                setTimeout(function(){ typeWriter(id, ar); }, speedForward);
+            }
+            
+            // If full string has been typed, switch to backspace mode.
+            } else if (i == aString.length) {
+            
+            isBackspacing = true;
+            setTimeout(function(){ typeWriter(id, ar); }, speedWait);
+            
+            }
+            
+        // If backspacing is enabled
+        } else {
+            
+            // If either the header or the paragraph still has text, continue backspacing
+            if (eHeader.text().length > 0 || eParagraph.text().length > 0) {
+            
+            // If paragraph still has text, continue erasing, otherwise switch to the header.
+            if (eParagraph.text().length > 0) {
+                eParagraph.text(eParagraph.text().substring(0, eParagraph.text().length - 1));
+            } else if (eHeader.text().length > 0) {
+                eParagraph.removeClass("cursor");
+                eHeader.addClass("cursor");
+                eHeader.text(eHeader.text().substring(0, eHeader.text().length - 1));
+            }
+            setTimeout(function(){ typeWriter(id, ar); }, speedBackspace);
+            
+            // If neither head or paragraph still has text, switch to next quote in array and start typing.
+            } else { 
+            
+            isBackspacing = false;
+            i = 0;
+            isParagraph = false;
+            a = (a + 1) % ar.length; //Moves to next position in array, always looping back to 0
+            setTimeout(function(){ typeWriter(id, ar); }, 10);
+            
+            }
+        }
+        }

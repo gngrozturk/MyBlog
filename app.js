@@ -218,6 +218,11 @@ app.get("/about", function(req, res) {
   res.render("about");
 });
 
+// Yazarlar tanıtım
+app.get("/writers", function(req, res) {
+  res.render("writers");
+});
+
 // Yazar Girişi
 app.get(
   "/login",
@@ -300,7 +305,7 @@ app.get("/users/:username/blogs", (req, res) => {
       .exec((err, blogs) => {
         if (err) throw err;
         blogs = blogs.map(b => {
-          b["spoiler"] = elipsis(b.body, 200)
+          b["spoiler"] = elipsis(b.body, 300)
           return b
         })
 

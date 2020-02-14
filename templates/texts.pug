@@ -8,17 +8,17 @@ block content
                     h1.display-4.titles= blog.title 
                     .p.paragraf4 #{blog.author.googleData.displayName} | #{parseDate(blog.pub_date)}
             .row
-                .col-lg-7
+                .col-lg-8
                     p.paragraf= blog.spoiler
 
-                .col-lg-5
+                .col-lg-4
                     img.img-fluid(src="/images/" + blog.image, alt='')
 
             .row.mt-3
                 .col-lg-12
                     .d-flex.align-items-end
-                        a.btn.btn-grad.p-3(href="/blog/" + blog._id) Devamını Oku
-                            i.ml-3.fas.fa-angle-double-right
+                        a.btn.btn-grad.p-2(href="/blog/" + blog._id) Devamını Oku
+                            i.ml-1.fas.fa-angle-double-right
                         
         
 block js
