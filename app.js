@@ -17,6 +17,8 @@ const dotenv = require("dotenv").config();
 
 const app = express();
 
+const PORT = process.env.PORT
+
 const upload = multer({
   dest: "public/images"
 });
@@ -314,6 +316,6 @@ app.get("/users/:username/blogs", (req, res) => {
   });
 });
 
-app.listen(8000, function() {
+app.listen(PORT, function() {
   console.log("Server su portdan calışıyor: 8000");
 });
