@@ -23,25 +23,25 @@ html(lang="en")
                 span.navbar-toggler-icon
             #navbarSupportedContent.collapse.navbar-collapse.ml-auto
                 ul.navbar-nav.ml-auto
-                    li.nav-item.dropdown.mr-3
+                    li.nav-item.dropdown.mx-2
                         a#navbarDropdown.nav-link(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                             | Biz Kimiz ?
                         .dropdown-menu(aria-labelledby='navbarDropdown')
                             a.dropdown-item(href='/about') Görüşümüz & Görevimiz
                             a.dropdown-item(href='/writers') Yazarlar        
-                    li.nav-item.dropdown.mr-3
+                    li.nav-item.dropdown.mx-2
                         a#navbarDropdown.nav-link(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                             | Sağlık Bilimleri
                         .dropdown-menu(aria-labelledby='navbarDropdown')
                             a.dropdown-item(href='#') Kübra Nur Bektaş
                             a.dropdown-item(href='#') Melih Can Ekşioğlu   
-                    li.nav-item.dropdown.mr-3
+                    li.nav-item.dropdown.mx-2
                         a#navbarDropdown.nav-link(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                             | Mühendislik Bilimleri
                         .dropdown-menu(aria-labelledby='navbarDropdown')
                             a.dropdown-item(href='http://localhost:8000/users/gungor/blogs') Güngör Öztürk
                             a.dropdown-item(href='#') Furkan Öztekin
-                    li.nav-item.mr-3
+                    li.nav-item.mx-2
                         a.nav-link(href='') Sanat
                     if user
                         li.nav-item
@@ -51,7 +51,7 @@ html(lang="en")
                                 a.nav-link#exitbtn(href="#") #{user.googleData.given_name}
                                     i.icon-active.ml-2.fas.fa-user-circle
                     else
-                        li.nav-item.mr-3
+                        li.nav-item.mx-2
                             a.btn.btn-grad.px-3(href='/login', role='button', aria-pressed='true') Yazar Girişi
 
         block description

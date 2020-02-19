@@ -47,7 +47,7 @@
  font-family: "Open Sans", sans-serif;
 }
 
-#navbarSupportedContent > ul > li.nav-item.dropdown.mr-3.show > div > a
+#navbarSupportedContent > ul > li.nav-item.dropdown.mx-2.show > div > a
 {
   background-color: white;
   text-align: center;
@@ -95,7 +95,7 @@
 #profil_1
 {
   border-radius: 15px;  
-  height: 200px;
+  max-height: 200px;
 }
 
 #profil_2
@@ -444,8 +444,7 @@ p.cursor::after {
 
   .vertical
   {
-   
-    padding-top: 20vh;
+   padding-top: 20vh;
   }
 
   body > div.description > div.container

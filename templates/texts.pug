@@ -8,10 +8,10 @@ block content
                     h1.display-4.titles= blog.title 
                     .p.paragraf4 #{blog.author.googleData.displayName} | #{parseDate(blog.pub_date)}
             .row
-                .col-lg-8
+                .col-md-8
                     p.paragraf= blog.spoiler
 
-                .col-lg-4
+                .col-md-4
                     img.img-fluid(src="/images/" + blog.image, alt='')
 
             .row.mt-3
