@@ -5,7 +5,7 @@ block styles
 
 block content
     h1.add Blog Ekle
-    form.mt-5#addForm(method="POST" actions="/blog/add" enctype="multipart/form-data")
+    form.mt-5#addForm(method="POST" actions="/blog/add")
         label(for='exampleFormControlTextarea1')
             .p-form.mt-3 Paylaşmak İstediğiniz Metnin Başlığını Giriniz
         .input-group
@@ -14,38 +14,49 @@ block content
         label(for='exampleFormControlTextarea1') 
             .p-form.mt-3 Paylaşmak İstediğiniz Metni Giriniz
         textarea.form-control#mdtextarea(aria-label='With textarea' name="content", required)
-        .form-group.mt-3
-            label(for='exampleFormControlFile1') 
-                .p-form Görsel Materyal Eklemek İçin Lütfen Dosya Seçiniz
-                br
-            input#exampleFormControlFile1.form-control-file(type='file' name="blog_image", required)
-            
+
         .row
             .col-lg-12
-                button.btn.btn-send.mt-5#sbbtn(type='submit') Gönder
+                button.btn.btn-send.mt-5#sbbtn Gönder
                     i.ml-3.fas.fa-paper-plane
 
 
 block js
     script(src="/components/simplemde/dist/simplemde.min.js")
     script.
+
+        const getImageUrl = (value) => {
+            const images = value.match(/^!\[Banner\]\((.+)\)/);
+            if (images) {
+                return images[1];
+            } else return false;
+        }
         var simpleMD = new SimpleMDE({
             element: document.getElementById("mdtextarea"),
             indentWithTabs: true,
         });
-        $("#sbbtn").click(function() {
-            simpleMD.toTextArea();
-            simpleMD = null;
 
-            var data = new FormData($("addForm"));
+        $("#sbbtn").click(function(evt) {
+            evt.preventDefault()
+            simpleMD.toTextArea();
+            console.log(simpleMD.value())
+            ;
+            const payload = {
+                title: $("#title").val(),
+                detail: simpleMD.value().replace(/^!\[Banner\]\((.+)\)/, ""),
+                bannerUrl:  getImageUrl(simpleMD.value())
+            }
+            console.log(payload);
+            simpleMD = null
             $.ajax({
-                url: '/blog/add',
-                enctype: 'multipart/form-data',
-                data: data,
                 type: 'POST',
-                processData: false,
-                contentType: false,
-                cache: false,
+                url: '/blog/add',
+                data: payload,
+                statusCode: {
+                    200: function(){
+                        window.location.href = "/"
+                    }
+                }
             })
         })
 

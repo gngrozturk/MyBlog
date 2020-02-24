@@ -8,9 +8,9 @@ block content
         br
         .row
             .col-lg-12.text-center
-                img.img-fluid.my-4(src="/images/" + blog.image, width="80%")
+                img.img-fluid.my-4(src=blog.image, width="80%")
 
-        .paragraf.container!= convertedContent
+        .paragrafD.paragraf.container!= convertedContent
     
             p.paragraf4 #{parseDate(blog.pub_date)}
         if user    

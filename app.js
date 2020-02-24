@@ -98,8 +98,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       console.log(profile);
-      User.find((data, err) => {
-      });
+      User.find((data, err) => {});
       User.findOne({ googleId: profile.id }).exec((err, data) => {
         if (err) throw err;
         if (data === null) {
@@ -143,7 +142,7 @@ function isUserAuthenticated(req, res, next) {
 
 app.use("*", (req, res, next) => {
   console.log(req.user);
-  res.locals.user = (req.user && !isEmpty(req.user)) ? req.user : null;
+  res.locals.user = req.user && !isEmpty(req.user) ? req.user : null;
   next();
 });
 
@@ -178,32 +177,27 @@ app.get("/blog/add", isUserAuthenticated, function(req, res) {
   });
 });
 // Blog kayıt(POST)
-app.post("/blog/add", upload.single("blog_image"), function(req, res) {
-  let image = req.file;
-  let image_path = image.filename;
-
+app.post("/blog/add", isUserAuthenticated, function(req, res) {
+  console.log(">> ", req.body);
   User.findOne({ googleId: req.user.googleId })
     .populate("posts")
     .exec((err, user) => {
       if (err) throw err;
-      let blog = new Blog({
+      new Blog({
         title: req.body.title,
+        body: req.body.detail,
         author: user._id,
-        body: req.body.content,
-        image: image_path
-      });
-      blog.save(
-        (err,
-        _ => {
-          if (err) throw err;
-          user.posts.push(blog);
+        image: req.body.bannerUrl
+      }).save((err, blog) => {
+        if (err) throw err;
+        user.posts.push(blog),
           user.save((err, _) => {
             if (err) throw err;
-            res.redirect("/");
+            res.status(200);
           });
-        })
-      );
+      });
     });
+  res.sendStatus(200);
 });
 
 // Detay sayfası
@@ -309,7 +303,7 @@ app.get("/users/:username/blogs", (req, res) => {
           b["spoiler"] = elipsis(b.body, 300);
           return b;
         });
-
+        console.log(blogs);
         res.render("texts", { blogs });
       });
   });
