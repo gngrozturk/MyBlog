@@ -14,12 +14,7 @@ block content
         label(for='exampleFormControlTextarea1') 
             .p-form.mt-3 Paylaşmak İstediğiniz Metni Giriniz
         textarea.form-control#mdtextarea(aria-label='With textarea' name="content", required)= blog.body
-        .form-group.mt-3
-            label(for='exampleFormControlFile1') 
-                .p-form Görsel Materyal Eklemek İçin Lütfen Dosya Seçiniz
-                br
-            input#exampleFormControlFile1.form-control-file(type='file' name="blog_image", required)
-            img.mt-3.img-thumbnail(src="/images/" + blog.image, width=300)
+  
         .row
             .col-lg-12
                 button.btn.btn-send.mt-5#sbbtn(type='submit') Gönder

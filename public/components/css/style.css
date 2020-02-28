@@ -430,7 +430,7 @@ p.cursor::after {
 @media screen and (min-width:992px)
 {
 
-  body > div > div > div.paragraf.container
+  body > div > div > div.paragraf.paragrafD
   {
     max-width: 960px;
     margin-top:30px;
