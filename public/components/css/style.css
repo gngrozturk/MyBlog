@@ -229,7 +229,6 @@ body > footer > div > div
 .btn-edit
 {
   border-radius: 30px;
-  padding: 1em 3em;
   background-size: 200% auto;
   color: white;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -254,7 +253,6 @@ body > footer > div > div
 .btn-delete
 {
   border-radius: 30px;
-  padding: 1em 3em;
   background-size: 200% auto;
   color: white;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);

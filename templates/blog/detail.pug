@@ -13,12 +13,13 @@ block content
         .paragrafD.paragraf.container!= convertedContent
     
             p.paragraf4 #{parseDate(blog.pub_date)}
-        if user    
-            a.btn.btn-edit.mt-5(href="/blog/" + blog.id + '/edit') Düzenle 
-                i.ml-2.fas.fa-pencil-alt
+        if user
+            .row.justify-content-center.mt-5    
+                a.btn.btn-edit.px-3.mr-1(href="/blog/" + blog.id + '/edit') Düzenle 
+                    i.mx-2.fas.fa-pencil-alt
 
-            a.btn.btn-delete.ml-3.mt-5#delete-blog(href="#", data-id=blog.id) Sil 
-                i.ml-2.fas.fa-trash-alt
+                a.btn.btn-delete.px-3.ml-1(href="#", data-id=blog.id) Sil 
+                    i.mx-2.fas.fa-trash-alt
 
 
 block js
