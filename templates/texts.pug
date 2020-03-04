@@ -2,11 +2,11 @@ extends base
 
 block content
     each blog in blogs
-        #part(data-aos="fade-up",data-aos-duration="600")
+        #part(data-aos="fade-up",data-aos-duration="800")
             .row.my-4
                 .col-lg-12
                     h1.display-4.titles= blog.title 
-                    .p.paragraf4 #{blog.author.googleData.displayName} | #{parseDate(blog.pub_date)}
+                    .h5.paragraf4 #{blog.author.googleData.displayName} | #{parseDate(blog.pub_date)}
             .row
                 .col-md-8
                     p.paragraf= blog.spoiler

@@ -12,7 +12,7 @@ block content
 
         .paragrafD.paragraf.mx-auto!= convertedContent
     
-            p.paragraf4 #{parseDate(blog.pub_date)}
+            p.paragraf4.text-right #{parseDate(blog.pub_date)}
         if user
             .row.justify-content-center.mt-5    
                 a.btn.btn-edit.px-3.mr-1(href="/blog/" + blog.id + '/edit') Düzenle 

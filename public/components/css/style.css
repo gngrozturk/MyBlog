@@ -31,7 +31,6 @@
 /*author in spoiler*/
 .paragraf4
 {
-  font-size: 20px;
   text-align: right;
   font-family: "Roboto", sans-serif;
 }
@@ -107,6 +106,7 @@
 #name_index
 {
   font-family: 'Raleway', sans-serif;
+  
 }
 
 #writers
@@ -301,7 +301,7 @@ body > footer > div > div
 
 #part
 {
-  margin-bottom: 150px;
+  margin-bottom: 80px;
 }
 
 
@@ -352,6 +352,15 @@ p.cursor::after {
   text-align: center;
 }
 
+@media screen and (max-width:767px){
+
+  .paragraf4
+  {
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+  }
+}
+
 
 @media screen and (max-width:992px){
 
@@ -362,17 +371,10 @@ p.cursor::after {
     font-size: 1rem;
   }
 
-  .carousel-item
+  .info
   {
-    height:auto;
-    object-fit:contain;
+    text-indent: 25px;
   }
-
-  .navbar
-  {
-    position: relative;
-  }
-
   .titles
   {
     font-size: 50px;
@@ -396,7 +398,7 @@ p.cursor::after {
 
   #part
   {
-    margin-bottom: 100px;
+    margin-bottom: 70px;
   }
   .info_1
   {
@@ -411,7 +413,6 @@ p.cursor::after {
 
   #writers
   {
-    margin-bottom: 70px;
     font-family: 'Raleway', sans-serif;
     border-bottom: #26a0da 1px solid;
   }
