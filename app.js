@@ -263,19 +263,12 @@ app.get("/blog/:id/edit", isUserAuthenticated, passBlog, function(req, res) {
   });
 });
 
-app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function(
-  req,
-  res
-) {
+app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function(req,res) {
   var payload = {
     title: req.body.title,
     body: req.body.content,
-    author: req.body.author
+    image: req.body.bannerUrl
   };
-  if (req.file) {
-    fs.unlinkSync(path.join(__dirname, "public", "images", req.blog.image));
-    payload.image = req.file.filename;
-  }
 
   Blog.update({ _id: req.params.id }, payload, function(err) {
     if (err) return err;
