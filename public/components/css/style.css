@@ -2,10 +2,14 @@
 .paragraf 
 { 
   font-family: "Roboto", sans-serif;
-  text-indent: 45px;
   font-size: 1rem;
 }
 
+html.no-touch body div.container.main div.kapsamli div.paragrafD.paragraf.mx-auto p img.img-fluid.text-center
+{
+  width: 100%;
+  margin-bottom: 3%;
+}
 /*form command*/
 .p-form 
 {
@@ -15,7 +19,7 @@
 .info
 {
   font-family: "Roboto", sans-serif;
-  text-indent: 45px;
+  text-indent: 3%;
 }
 
 .infoC
@@ -371,14 +375,9 @@ p.cursor::after {
   .paragraf 
   { 
     font-family: "Roboto", sans-serif;
-    text-indent: 25px;
     font-size: 1rem;
   }
 
-  .info
-  {
-    text-indent: 25px;
-  }
   .titles
   {
     font-size: 50px;
@@ -434,13 +433,13 @@ p.cursor::after {
 
   body > div > div > div.paragraf.paragrafD
   {
-    max-width: 960px;
+    max-width: 920px;
     margin-top:30px;
   } 
-  
+
   .about
   {
-    max-width: 960px;
+    max-width: 920px;
   }
 
   .vertical
