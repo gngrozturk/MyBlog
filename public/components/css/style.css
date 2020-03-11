@@ -115,8 +115,7 @@ html.no-touch body div.container.main div.kapsamli div.paragrafD.paragraf.mx-aut
   font-family: 'Raleway', sans-serif;
 }
 
-
-html.touch body footer
+.bottom
 {
   padding-top: 100%;
 }
