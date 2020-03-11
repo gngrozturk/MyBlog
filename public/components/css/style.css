@@ -33,6 +33,13 @@ html.no-touch body div.container.main div.kapsamli div.paragrafD.paragraf.mx-aut
   font-size: 1rem;
 }
 
+.paragraf_about 
+{ 
+  font-family: "Roboto", sans-serif;
+  text-indent: 3%;
+  font-size: 1rem;
+}
+
 /*form command*/
 .p-form 
 {
