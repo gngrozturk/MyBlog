@@ -263,7 +263,10 @@ app.get("/blog/:id/edit", isUserAuthenticated, passBlog, function(req, res) {
   });
 });
 
-app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function(req,res) {
+app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function(
+  req,
+  res
+) {
   var payload = {
     title: req.body.title,
     body: req.body.content,
@@ -276,11 +279,20 @@ app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function(req,r
   });
 });
 
-app.delete("/blog/:id", function(req, res) {
-  Blog.remove({ _id: req.params.id }, function(err) {
-    if (err) return err;
-    res.sendStatus(200);
-  });
+app.delete("/blog/:id", isUserAuthenticated, function(req, res) {
+  console.log(req.params);
+  Blog.findOne({_id: req.params.id})
+    .populate("author")
+    .exec((err, blog) => {
+      if (err) throw err;
+      const user = blog.author;
+      
+      user.posts = user.posts.filter(x => !(x.equals(blog._id)));
+      user.save((err, _) => {
+        res.sendStatus(200); 
+      })
+      blog.remove();
+    });
 });
 
 app.get("/users/:username/blogs", (req, res) => {
@@ -293,10 +305,11 @@ app.get("/users/:username/blogs", (req, res) => {
       .exec((err, blogs) => {
         if (err) throw err;
         blogs = blogs.map(b => {
-          b["spoiler"] = elipsis(b.body, 300);
+          b.spoiler = elipsis(b.body, 200);
           return b;
         });
         console.log(blogs);
+
         res.render("texts", { blogs });
       });
   });
