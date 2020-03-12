@@ -305,7 +305,7 @@ app.get("/users/:username/blogs", (req, res) => {
       .exec((err, blogs) => {
         if (err) throw err;
         blogs = blogs.map(b => {
-          b.spoiler = elipsis(b.body, 200);
+          b.spoiler = elipsis(b.body, 300);
           return b;
         });
         console.log(blogs);

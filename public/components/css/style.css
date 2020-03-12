@@ -20,12 +20,6 @@
   background-color: white;
 }
 
-html.no-touch body div.container.main div.kapsamli div.paragrafD.paragraf.mx-auto p img.img-fluid.text-center
-{
-  width: 100%;
-  margin-bottom: 3%;
-}
-
 /*blog spoiler*/
 .paragraf 
 { 
@@ -425,6 +419,10 @@ p.cursor::after {
 
 @media screen and (min-width:992px)
 {
+  .banner
+  {
+    width: 85%;
+  }
 
   body > div > div > div.paragraf.paragrafD
   {
