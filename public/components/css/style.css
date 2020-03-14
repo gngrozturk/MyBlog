@@ -83,8 +83,7 @@
 
 #profil_1
 {
-  border-radius: 15px;  
-  max-height: 200px;
+  border-radius: 15px;
 }
 
 #profil_2
@@ -360,6 +359,13 @@ p.cursor::after {
 
 
 @media screen and (max-width:992px){
+
+  #profil_1
+  {
+    border-radius: 15px;
+    max-height: 250px;
+  }
+
 
   .paragraf 
   { 
