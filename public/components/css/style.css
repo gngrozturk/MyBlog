@@ -115,6 +115,15 @@
   font-family: 'Raleway', sans-serif;
 }
 
+.privacy
+{
+  color: #2d2d2d;
+}
+.privacy:hover
+{
+  color: #2d2d2d;
+  text-decoration: none;
+}
 .footer
 {
   background-color: #2d2d2d;

@@ -213,6 +213,11 @@ app.get("/about", function(req, res) {
   res.render("about");
 });
 
+//Privacy
+app.get("/privacy", function(req, res) {
+  res.render("privacy");
+});
+
 // Yazarlar tanıtım
 app.get("/writers", function(req, res) {
   res.render("writers");
