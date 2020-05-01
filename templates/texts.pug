@@ -1,6 +1,9 @@
 extends base
 
 block content
+    
+    h1.titles.display-4.text-center.d-none #{user.googleData.displayName}
+
     each blog in blogs
         #part(data-aos="fade-up",data-aos-duration="800")
             .row.my-4

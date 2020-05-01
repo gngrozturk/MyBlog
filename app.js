@@ -315,7 +315,7 @@ app.get("/users/:username/blogs", (req, res) => {
         });
         console.log(blogs);
 
-        res.render("texts", { blogs });
+        res.render("texts", { blogs,user });
       });
   });
 });
