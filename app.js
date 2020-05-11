@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
 const elipsis = require("text-ellipsis");
-const multer = require("multer");
 const fs = require("fs");
 const md = require("markdown-it")();
 const removeMd = require("remove-markdown");
@@ -20,9 +19,7 @@ const app = express();
 
 const PORT = process.env.PORT;
 
-const upload = multer({
-  dest: "public/images",
-});
+
 
 mongoose.connect(process.env.DATABASE_URI, {
   useNewUrlParser: true,
@@ -90,7 +87,7 @@ passport.use(
       callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
+     
       User.find((data, err) => {});
       User.findOne({ googleId: profile.id }).exec((err, data) => {
         if (err) throw err;
@@ -134,7 +131,7 @@ function isUserAuthenticated(req, res, next) {
 }
 
 app.use("*", (req, res, next) => {
-  console.log(req.user);
+ 
   res.locals.user = req.user && !isEmpty(req.user) ? req.user : null;
   next();
 });
@@ -179,7 +176,7 @@ app.get("/blog/add", isUserAuthenticated, function (req, res) {
 });
 // Blog kayıt(POST)
 app.post("/blog/add", isUserAuthenticated, function (req, res) {
-  console.log(">> ", req.body);
+  
   User.findOne({ googleId: req.user.googleId })
     .populate("posts")
     .exec((err, user) => {
@@ -286,7 +283,7 @@ app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function (
 });
 
 app.delete("/blog/:id", isUserAuthenticated, function (req, res) {
-  console.log(req.params);
+  
   Blog.findOne({ _id: req.params.id })
     .populate("author")
     .exec((err, blog) => {
@@ -314,7 +311,7 @@ app.get("/users/:username/blogs", (req, res) => {
           b.spoiler = elipsis(b.body, 300);
           return b;
         });
-        console.log(blogs);
+        
 
         res.render("texts", { blogs, author: user });
       });
