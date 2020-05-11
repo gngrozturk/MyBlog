@@ -6,13 +6,28 @@ block description
             #output.output.vertical
                     br
                     h1.cursor
-                    p
-                
-
+                    
     br
     .container
+        
+        h2.text-center.titles.display-4.my-3.gy Güncel Yazılar  
+        br    
+        .card-deck.mt-2.mb-4.justify-content-center(data-aos="fade-up",data-aos-duration="800")
+            each blog in blogs  
+                .card.text-center.mt-1
+                    a(href="/blog/" + blog._id, style='text-decoration: none; color:#2d2d2d')
+                        img.card-img-top.img-fluid(src=blog.image, alt='')
+                        .card-body
+                            h3.card-title #{blog.title}
+                            br
+                            h3.card-text #{blog.author.googleData.displayName}
+                            
+                        .card-footer
+                            small.text-muted #{parseDate(blog.pub_date)}
+                               
+        br
         .text-center.mt-3.mb-1
-            h2#writers.display-3 Yazarlar
+            h2#writers.display-4 Yazarlar
         .row(data-aos='fade-up', data-aos-duration='800')
             .col-lg-6.mt-3.mb-5
                 .row
@@ -30,7 +45,7 @@ block description
                         .div       
                             a.mr-2(href='https://www.instagram.com/melih.eksioglu/', target='_blank')
                                 i#instagram.fab.fa-instagram
-                            a.ml-2(href=' https://twitter.com/EksiogluMelih?s=08', target='_blank')
+                            a.ml-2(href='https://twitter.com/meliheksioglu?s=08', target='_blank')
                                     i#tw.fab.fa-twitter 
                         
                                   

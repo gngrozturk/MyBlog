@@ -20,6 +20,28 @@
   background-color: white;
 }
 
+.gy
+{
+  border-bottom: #26a0da 1px solid;
+}
+
+.card
+{
+  box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
+	transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+}
+.card:hover
+{
+  transform: translateY(-0.5rem) scale(1.0125);
+  box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+  
+}
+
+.card-title,.card-text
+{
+  font-family: 'Raleway', sans-serif;
+}
+
 /*blog spoiler*/
 .paragraf 
 { 
@@ -434,6 +456,11 @@ p.cursor::after {
 
 @media screen and (min-width:992px)
 {
+  .card-img-top
+  {
+  max-height:142px;
+  object-fit: cover;
+  }
   .banner
   {
     width: 85%;
@@ -468,5 +495,13 @@ p.cursor::after {
   {
     text-align: left;
     font-family: "Roboto", sans-serif;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .card-deck .card {
+    -ms-flex: 0 0 32%;
+    flex: 0 0 32%;
+    margin-bottom: 10px;
   }
 }

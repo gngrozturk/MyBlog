@@ -20,21 +20,21 @@ const app = express();
 const PORT = process.env.PORT;
 
 const upload = multer({
-  dest: "public/images"
+  dest: "public/images",
 });
 
 mongoose.connect(process.env.DATABASE_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 let db = mongoose.connection;
 
 // db açık mı
-db.once("open", function() {
+db.once("open", function () {
   console.log("Databaseye bağlanıldı");
 });
 
-db.on("error", function(err) {
+db.on("error", function (err) {
   console.log(err);
 });
 
@@ -58,14 +58,14 @@ app.use(
   session({
     secret: "this secret",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 );
 
 // Static dosyalar
 app.use(express.static(path.join(__dirname, "public")));
 
-const parseDate = dateStr => {
+const parseDate = (dateStr) => {
   const d = new Date(dateStr);
   let month = "" + (d.getMonth() + 1);
   let day = "" + d.getDate();
@@ -94,7 +94,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: process.env.GOOGLE_CALLBACK_URL
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, done) => {
       console.log(profile);
@@ -106,7 +106,7 @@ passport.use(
         } else {
           data.update(
             {
-              googleData: profile
+              googleData: profile,
             },
             (err, _) => {
               if (err) throw err;
@@ -147,8 +147,8 @@ app.use("*", (req, res, next) => {
 });
 
 // requsete blog u geçir
-const passBlog = function(req, res, next) {
-  Blog.findById(req.params.id, function(err, blog) {
+const passBlog = function (req, res, next) {
+  Blog.findById(req.params.id, function (err, blog) {
     req.blog = blog;
     next();
   });
@@ -156,7 +156,7 @@ const passBlog = function(req, res, next) {
 
 app.get("/api/isauth", (req, res) => {
   let payload = {
-    status: false
+    status: false,
   };
   if (req.user) {
     payload.status = true;
@@ -166,18 +166,26 @@ app.get("/api/isauth", (req, res) => {
 });
 
 // İndex route
-app.get("/", function(req, res) {
-  res.render("index", { blogs: [] });
+app.get("/", function (req, res) {
+  Blog.find({})
+    .sort("-pub_date")
+    .populate('author')
+    .select("title author pub_date image")
+    .limit(4)
+    .exec((err, blogs) => {
+      if (err) throw err;
+      res.render("index", { blogs});
+    });
 });
 
 // Blog ekleme
-app.get("/blog/add", isUserAuthenticated, function(req, res) {
+app.get("/blog/add", isUserAuthenticated, function (req, res) {
   res.render("blog/add", {
-    title: "Blog ekle"
+    title: "Blog ekle",
   });
 });
 // Blog kayıt(POST)
-app.post("/blog/add", isUserAuthenticated, function(req, res) {
+app.post("/blog/add", isUserAuthenticated, function (req, res) {
   console.log(">> ", req.body);
   User.findOne({ googleId: req.user.googleId })
     .populate("posts")
@@ -187,7 +195,7 @@ app.post("/blog/add", isUserAuthenticated, function(req, res) {
         title: req.body.title,
         body: req.body.detail,
         author: user._id,
-        image: req.body.bannerUrl
+        image: req.body.bannerUrl,
       }).save((err, blog) => {
         if (err) throw err;
         user.posts.push(blog),
@@ -201,25 +209,25 @@ app.post("/blog/add", isUserAuthenticated, function(req, res) {
 });
 
 // Detay sayfası
-app.get("/blog/:id", passBlog, function(req, res) {
+app.get("/blog/:id", passBlog, function (req, res) {
   res.render("blog/detail", {
     blog: req.blog,
-    convertedContent: md.render(req.blog.body)
+    convertedContent: md.render(req.blog.body),
   });
 });
 
 // Hakkımda sayfası
-app.get("/about", function(req, res) {
+app.get("/about", function (req, res) {
   res.render("about");
 });
 
 //Privacy
-app.get("/privacy", function(req, res) {
+app.get("/privacy", function (req, res) {
   res.render("privacy");
 });
 
 // Yazarlar tanıtım
-app.get("/writers", function(req, res) {
+app.get("/writers", function (req, res) {
   res.render("writers");
 });
 
@@ -227,7 +235,7 @@ app.get("/writers", function(req, res) {
 app.get(
   "/login",
   passport.authenticate("google", {
-    scope: ["profile"]
+    scope: ["profile"],
   })
 );
 
@@ -241,8 +249,8 @@ app.get(
       url.format({
         pathname: "/",
         query: {
-          login: true
-        }
+          login: true,
+        },
       })
     );
   }
@@ -255,47 +263,47 @@ app.get("/logout", (req, res) => {
     url.format({
       pathname: "/",
       query: {
-        logout: true
-      }
+        logout: true,
+      },
     })
   );
 });
 
 // Düzenleme sayfası
-app.get("/blog/:id/edit", isUserAuthenticated, passBlog, function(req, res) {
+app.get("/blog/:id/edit", isUserAuthenticated, passBlog, function (req, res) {
   res.render("blog/edit", {
-    blog: req.blog
+    blog: req.blog,
   });
 });
 
-app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function(
+app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function (
   req,
   res
 ) {
   var payload = {
     title: req.body.title,
     body: req.body.content,
-    image: req.body.bannerUrl
+    image: req.body.bannerUrl,
   };
 
-  Blog.update({ _id: req.params.id }, payload, function(err) {
+  Blog.update({ _id: req.params.id }, payload, function (err) {
     if (err) return err;
     res.redirect("/");
   });
 });
 
-app.delete("/blog/:id", isUserAuthenticated, function(req, res) {
+app.delete("/blog/:id", isUserAuthenticated, function (req, res) {
   console.log(req.params);
-  Blog.findOne({_id: req.params.id})
+  Blog.findOne({ _id: req.params.id })
     .populate("author")
     .exec((err, blog) => {
       if (err) throw err;
       const user = blog.author;
-      
-      user.posts = user.posts.filter(x => !(x.equals(blog._id)));
+
+      user.posts = user.posts.filter((x) => !x.equals(blog._id));
       user.save((err, _) => {
-        res.sendStatus(200); 
-      })
+        res.sendStatus(200);
+      });
       blog.remove();
     });
 });
@@ -309,17 +317,17 @@ app.get("/users/:username/blogs", (req, res) => {
       .sort("-pub_date")
       .exec((err, blogs) => {
         if (err) throw err;
-        blogs = blogs.map(b => {
+        blogs = blogs.map((b) => {
           b.spoiler = elipsis(b.body, 300);
           return b;
         });
         console.log(blogs);
 
-        res.render("texts", { blogs,author:user });
+        res.render("texts", { blogs, author: user });
       });
   });
 });
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("Server su portdan calışıyor: 8000");
 });
