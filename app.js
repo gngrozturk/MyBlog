@@ -266,7 +266,7 @@ app.get("/blog/:id/edit", isUserAuthenticated, passBlog, function (req, res) {
   });
 });
 
-app.post("/blog/:id/edit", upload.single("blog_image"), passBlog, function (
+app.post("/blog/:id/edit", passBlog, function (
   req,
   res
 ) {
