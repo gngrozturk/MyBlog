@@ -14,7 +14,8 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const url = require("url");
 const dotenv = require("dotenv").config();
-
+const moment = require('moment');
+moment.locale('tr')
 const app = express();
 
 const PORT = process.env.PORT;
@@ -66,15 +67,7 @@ app.use(
 app.use(express.static(path.join(__dirname, "public")));
 
 const parseDate = (dateStr) => {
-  const d = new Date(dateStr);
-  let month = "" + (d.getMonth() + 1);
-  let day = "" + d.getDate();
-  const year = d.getFullYear();
-
-  if (month.length < 2) month = "0" + month;
-  if (day.length < 2) day = "0" + day;
-
-  return [day, month, year].join("-");
+  return moment(dateStr).fromNow()
 };
 
 // flash mesajları
