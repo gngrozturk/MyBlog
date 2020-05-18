@@ -458,7 +458,7 @@ p.cursor::after {
 {
   .card-img-top
   {
-  max-height:142px;
+  max-height:126px;
   object-fit: cover;
   }
   .banner
