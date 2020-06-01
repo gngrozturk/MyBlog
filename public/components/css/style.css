@@ -454,8 +454,13 @@ p.cursor::after {
   }
 }
 
+
 @media screen and (min-width:992px)
 {
+  .card-title
+  {
+  height: 40px;
+  }
   .card-img-top
   {
   max-height:126px;

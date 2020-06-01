@@ -18,9 +18,9 @@ block description
                     a(href="/blog/" + blog._id, style='text-decoration: none; color:#2d2d2d')
                         img.card-img-top.img-fluid(src=blog.image, alt='')
                         .card-body
-                            h3.card-title #{blog.title}
+                            h4.card-title #{blog.title}
                             br
-                            h3.card-text #{blog.author.googleData.displayName}
+                            h4.card-text #{blog.author.googleData.displayName}
                             
                         .card-footer
                             small.text-muted #{parseDate(blog.pub_date)}
