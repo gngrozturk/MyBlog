@@ -13,13 +13,12 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const url = require("url");
 const dotenv = require("dotenv").config();
-const moment = require('moment');
-moment.locale('tr')
+const moment = require("moment");
+const axios = require("axios");
+moment.locale("tr");
 const app = express();
 
 const PORT = process.env.PORT;
-
-
 
 mongoose.connect(process.env.DATABASE_URI, {
   useNewUrlParser: true,
@@ -64,7 +63,7 @@ app.use(
 app.use(express.static(path.join(__dirname, "public")));
 
 const parseDate = (dateStr) => {
-  return moment(dateStr).fromNow()
+  return moment(dateStr).fromNow();
 };
 
 // flash mesajları
@@ -87,7 +86,6 @@ passport.use(
       callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, done) => {
-     
       User.find((data, err) => {});
       User.findOne({ googleId: profile.id }).exec((err, data) => {
         if (err) throw err;
@@ -131,7 +129,6 @@ function isUserAuthenticated(req, res, next) {
 }
 
 app.use("*", (req, res, next) => {
- 
   res.locals.user = req.user && !isEmpty(req.user) ? req.user : null;
   next();
 });
@@ -155,16 +152,29 @@ app.get("/api/isauth", (req, res) => {
   res.send(payload);
 });
 
+app.get("/api/get_last_yt", (req, res) => {
+  axios
+    .get(
+      "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=25&playlistId=UUSWKuakUfWuDKphpYVakTQA&key=AIzaSyBVqkrYpS3bdem_bxDOwGfXXxoaPbnZjm4"
+    )
+    .then(({data}) => {
+      const lastID = data.items[0].contentDetails.videoId
+      res.status(200).json(`https://www.youtube.com/embed/${lastID}`)
+    }).catch(err => {
+      res.status(500).json("Error when getting video url")
+    })
+});
+
 // İndex route
 app.get("/", function (req, res) {
   Blog.find({})
     .sort("-pub_date")
-    .populate('author')
+    .populate("author")
     .select("title author pub_date image")
     .limit(4)
     .exec((err, blogs) => {
       if (err) throw err;
-      res.render("index", { blogs});
+      res.render("index", { blogs });
     });
 });
 
@@ -176,7 +186,6 @@ app.get("/blog/add", isUserAuthenticated, function (req, res) {
 });
 // Blog kayıt(POST)
 app.post("/blog/add", isUserAuthenticated, function (req, res) {
-  
   User.findOne({ googleId: req.user.googleId })
     .populate("posts")
     .exec((err, user) => {
@@ -266,10 +275,7 @@ app.get("/blog/:id/edit", isUserAuthenticated, passBlog, function (req, res) {
   });
 });
 
-app.post("/blog/:id/edit", passBlog, function (
-  req,
-  res
-) {
+app.post("/blog/:id/edit", passBlog, function (req, res) {
   var payload = {
     title: req.body.title,
     body: req.body.content,
@@ -283,7 +289,6 @@ app.post("/blog/:id/edit", passBlog, function (
 });
 
 app.delete("/blog/:id", isUserAuthenticated, function (req, res) {
-  
   Blog.findOne({ _id: req.params.id })
     .populate("author")
     .exec((err, blog) => {
@@ -311,7 +316,6 @@ app.get("/users/:username/blogs", (req, res) => {
           b.spoiler = elipsis(b.body, 300);
           return b;
         });
-        
 
         res.render("texts", { blogs, author: user });
       });

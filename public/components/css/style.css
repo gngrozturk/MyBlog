@@ -42,6 +42,8 @@
   font-family: 'Raleway', sans-serif;
 }
 
+
+
 /*blog spoiler*/
 .paragraf 
 { 
@@ -396,8 +398,7 @@ p.cursor::after {
     border-radius: 15px;
     max-height: 250px;
   }
-
-
+  
   .paragraf 
   { 
     font-family: "Roboto", sans-serif;
