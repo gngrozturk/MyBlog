@@ -2,29 +2,22 @@ extends base
 
 block content
     
-    h1.titles.display-4.text-center.d-none #{author.googleData.displayName}
+        .rowB(data-aos="fade-up" data-aos-duration="800")
+            each blog in blogs
+                .col-sm-3
+                    .card.justify-content-center.my-2.text-center
+                        a(href="/blog/" + blog._id, style='text-decoration: none; color:#2d2d2d')
+                            img.card-img-top.img-fluid(src=blog.image, alt='')
+                            .card-body
+                                h4.card-title= blog.title
+                                br
+                                
+                                h4.card-text.mt-2 #{author.googleData.displayName}
+                            .card-footer
+                                small.text-muted #{parseDate(blog.pub_date)}
 
-    each blog in blogs
-        #part(data-aos="fade-up",data-aos-duration="800")
-            .row.my-4
-                .col-lg-12
-                    h2.display-4.titles= blog.title
-                    hr.line 
-                    .h5.paragraf4 #{blog.author.googleData.displayName} | #{parseDate(blog.pub_date)}
-            .row
-                .col-md-8
-                    p.paragraf= blog.spoiler
 
-                .col-md-4
-                    img.img-fluid(src=blog.image, alt='')
-
-            .row.mt-3
-                .col-lg-12
-                    .d-flex.align-items-end
-                        a.btn.btn-grad.p-2.mx-1(href="/blog/" + blog._id) Devamını Oku
-                            i.ml-2.fas.fa-angle-double-right
-                        
-        
+                
 block js
     script(src="https://unpkg.com/aos@2.3.1/dist/aos.js")
     script.

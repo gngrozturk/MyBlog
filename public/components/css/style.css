@@ -25,8 +25,10 @@
   border-bottom: #26a0da 1px solid;
 }
 
+
 .card
 {
+  
   box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
 	transition: transform 0.1s ease-in-out, box-shadow 0.1s;
 }
@@ -471,6 +473,9 @@ p.cursor::after {
   {
     width: 85%;
   }
+  .card{
+    min-width: 255px;
+  }
 
   body > div > div > div.paragraf.paragrafD
   {
@@ -517,4 +522,21 @@ p.cursor::after {
     flex: 0 0 32%;
     margin-bottom: 10px;
   }
+
+  .card-title{
+    font-size: 18px;
+    height: auto;
+  }
+  .card-text{
+    font-size: 20px;
+  }
+}
+
+.rowB {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rowB > div[class*='col-'] {
+ display: flex;
 }
