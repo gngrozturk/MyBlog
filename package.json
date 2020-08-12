@@ -25,12 +25,14 @@
     "moment": "^2.25.3",
     "mongoose": "^5.7.5",
     "mongoose-slug-updater": "^3.1.4",
+    "mongoose-url-slugs": "^1.0.2",
     "node-fetch": "^2.6.0",
     "passport": "^0.4.0",
     "passport-google-oauth2": "^0.2.0",
     "pug": "^2.0.4",
     "remove-markdown": "^0.3.0",
     "showdown": "^1.9.1",
+    "slugify": "^1.4.4",
     "text-ellipsis": "^1.0.3"
   }
 }

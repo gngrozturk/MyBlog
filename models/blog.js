@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const slug = require("mongoose-slug-updater");
 
-mongoose.plugin(slug);
+
+
 
 // Blog şeması
 let blogSchema = mongoose.Schema({
@@ -17,6 +17,7 @@ let blogSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   },
+  
   image: {
     type: String,
     required: true
