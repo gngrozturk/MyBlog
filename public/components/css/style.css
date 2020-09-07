@@ -540,3 +540,7 @@ p.cursor::after {
 .rowB > div[class*='col-'] {
  display: flex;
 }
+
+p a{
+ word-wrap: break-word;
+}
