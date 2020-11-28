@@ -13,4 +13,3 @@ Ardından
 $ npm start
 ```
 
-yapım aşamasındadır.
