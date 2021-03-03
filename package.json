@@ -29,7 +29,7 @@
     "node-fetch": "^2.6.0",
     "passport": "^0.4.0",
     "passport-google-oauth2": "^0.2.0",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "remove-markdown": "^0.3.0",
     "showdown": "^1.9.1",
     "slugify": "^1.4.4",
