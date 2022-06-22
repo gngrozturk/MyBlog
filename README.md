@@ -1,13 +1,13 @@
 # MyBlog
 
-## Yukleme
+## Installation
 
 ```bash
 $ npm install -g bower nodemon
 $ npm install
 $ bower install bootstrap jquery
 ```
-Ardından
+Then
 
 ```bash
 $ npm start
