@@ -1,5 +1,7 @@
 # MyBlog
 
+MyBlog is a blog project that developed to practice web development knowledge.
+
 ## Installation
 
 ```bash
